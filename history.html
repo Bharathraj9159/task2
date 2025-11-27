@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task</title>
+  <link rel="stylesheet" href="./css/styles.css">
+
+  <link rel="stylesheet" href="./css/history.css">
+
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="sidebar">
+      <h2>My Website</h2>
+      <ul>
+        <li><a href="./index.html" >Dashboard</a></li>
+        <li><a href="./company-info.html">Company Info</a></li>
+        <li><a href="#" class="active">History</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+
+      </ul>
+    </div>
+
+    <div class="main">
+
+      <div class="topbar">
+  <div class="search-wrap" id="searchWrap">
+    <label for="navSearch" class="visually-hidden">Search site</label>
+    <div class="search-input-group">
+      <input id="navSearch" class="search-box" type="text" placeholder="Search or jump to..." aria-autocomplete="list" aria-controls="navList" aria-expanded="false" autocomplete="off" />
+      <button id="searchToggle" class="search-btn" aria-label="Open quick navigation">▾</button>
+    </div>
+
+    <ul id="navList" class="search-list" role="listbox" tabindex="-1" aria-label="Quick navigation" hidden>
+      <!-- JS will populate items; listed here as fallback -->
+      <li role="option" data-href="./index.html">Dashboard</li>
+      <li role="option" data-href="./company-info.html">Company Info</li>
+      <li role="option" data-href="./history.html">History</li>
+      <li role="option" data-href="./contact.html">Contact</li>
+    </ul>
+  </div>
+</div>
+
+
+      <!-- ===== Different Section: Analytics + Team + Timeline ===== -->
+<section class="unique-section">
+
+  <!-- PART A: Mini Analytics (sparkline-like + small KPIs) -->
+  <div class="analytics">
+    <div class="kpis">
+      <div class="kpi">
+        <div class="kpi-value" data-target="874">0</div>
+        <div class="kpi-label">Monthly Visits</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value" data-target="124">0</div>
+        <div class="kpi-label">New Leads</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value" data-target="3.8">0</div>
+        <div class="kpi-label">Avg. Time (min)</div>
+      </div>
+    </div>
+
+    <!-- small sparkline built with inline SVG -->
+    <div class="mini-chart">
+      <svg viewBox="0 0 120 40" preserveAspectRatio="none" class="spark">
+        <!-- polyline will be animated by CSS stroke-dashoffset for a drawing effect -->
+        <polyline points="0,30 20,24 40,12 60,18 80,10 100,20 120,14" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sparkline"/>
+      </svg>
+      <div class="chart-label">Visits last 7 days</div>
+    </div>
+  </div>
+
+
+
+  
+
+  <!-- PART B: Team quick-preview -->
+  <div class="team">
+    <h3>Team on this Project</h3>
+    <div class="team-grid">
+      <div class="member">
+        <div class="avatar small">PR</div>
+        <div class="meta">
+          <div class="name">Priya</div>
+          <div class="role muted">Designer</div>
+        </div>
+      </div>
+
+      <div class="member">
+        <div class="avatar small">RA</div>
+        <div class="meta">
+          <div class="name">Ravi</div>
+          <div class="role muted">Backend</div>
+        </div>
+      </div>
+
+      <div class="member">
+        <div class="avatar small">AK</div>
+        <div class="meta">
+          <div class="name">Akash</div>
+          <div class="role muted">Frontend</div>
+        </div>
+      </div>
+
+      <div class="member">
+        <div class="avatar small">BR</div>
+        <div class="meta">
+          <div class="name">You</div>
+          <div class="role muted">Lead</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART C: Project Timeline / Milestones -->
+  <div class="timeline">
+    <h3>Project Timeline</h3>
+    <ol>
+      <li>
+        <div class="time-left">Jan 2025</div>
+        <div class="time-right">
+          <div class="milestone">Design phase completed</div>
+          <div class="progress-bar"><div class="progress" data-progress="100"></div></div>
+        </div>
+      </li>
+
+      <li>
+        <div class="time-left">Mar 2025</div>
+        <div class="time-right">
+          <div class="milestone">Backend APIs ready</div>
+          <div class="progress-bar"><div class="progress" data-progress="85"></div></div>
+        </div>
+      </li>
+
+      <li>
+        <div class="time-left">May 2025</div>
+        <div class="time-right">
+          <div class="milestone">Beta testing</div>
+          <div class="progress-bar"><div class="progress" data-progress="60"></div></div>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+</section>
+
+
+
+<section class="history-progress-section">
+  <h2 class="history-title">Our Journey Through the Years</h2>
+
+  <div class="history-wrapper">
+    <!-- Timeline points -->
+    <div class="history-timeline">
+      <div class="h-point active" data-year="2019">2019</div>
+      <div class="h-point" data-year="2020">2020</div>
+      <div class="h-point" data-year="2021">2021</div>
+      <div class="h-point" data-year="2022">2022</div>
+      <div class="h-point" data-year="2023">2023</div>
+    </div>
+
+    <!-- Detail panel -->
+    <div class="history-card" id="historyCard">
+      <h3 id="hYear">2019</h3>
+      <p id="hContent">Company founded with a mission to deliver modern solutions.</p>
+
+      <div class="history-stats">
+        <div class="stat-box">
+          <span class="stat-number" id="hStat">25</span>
+          <span class="stat-label">Clients</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+    </div>
+
+  </div>
+
+
+  <script src="./js/history.js"></script>
+
+  
+  <script src="./script.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task</title>
+  <link rel="stylesheet" href="./css/styles.css">
+
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+  <div class="container">
+    
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h2>My Website</h2>
+      <ul>
+        <li><a href="#home" class="active">Dashboard</a></li>
+        <li><a href="./company-info.html">Company Info</a></li>
+        <li><a href="./history.html">History</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      
+   <!-- topbar with search + dropdown quick-nav -->
+
+<div class="topbar">
+  <div class="search-wrap" id="searchWrap">
+    <label for="navSearch" class="visually-hidden">Search site</label>
+    <div class="search-input-group">
+      <input id="navSearch" class="search-box" type="text" placeholder="Search or jump to..." aria-autocomplete="list" aria-controls="navList" aria-expanded="false" autocomplete="off" />
+      <button id="searchToggle" class="search-btn" aria-label="Open quick navigation">▾</button>
+    </div>
+
+    <ul id="navList" class="search-list" role="listbox" tabindex="-1" aria-label="Quick navigation" hidden>
+      <!-- JS will populate items; listed here as fallback -->
+      <li role="option" data-href="./index.html">Dashboard</li>
+      <li role="option" data-href="./company-info.html">Company Info</li>
+      <li role="option" data-href="./history.html">History</li>
+      <li role="option" data-href="./contact.html">Contact</li>
+    </ul>
+  </div>
+</div>
+
+
+      <!-- only one element has id="home" -->
+      <section id="home" class="page-section dashboard-light">
+
+        <h2 class="section-title">Dashboard Overview</h2>
+        <p class="section-sub">A quick and clean summary of your website’s important details.</p>
+
+        <div class="info-row">
+          <article class="info-box">
+            <h3>About the Company</h3>
+            <p>Our company focuses on delivering reliable services with a customer-first approach. Explore more in Company Info.</p>
+            <a href="./company-info.html" class="link-btn">View Details →</a>
+          </article>
+
+          <article class="info-box">
+            <h3>Latest History Update</h3>
+            <p>The last record update was added recently. Visit the History page to check changes and timelines.</p>
+            <a href="./history.html" class="link-btn">View History →</a>
+          </article>
+        </div>
+
+
+
+        <!-- DASHBOARD: Animated Insights Section -->
+<section class="dashboard-insights" aria-label="Dashboard insights">
+  <div class="insights-row">
+    <!-- Stat cards -->
+    <div class="stat-card reveal" data-animate-delay="0">
+      <div class="stat-left">
+        <div class="stat-icon">📈</div>
+        <div>
+          <div class="stat-label">Monthly Revenue</div>
+          <div class="stat-value" data-target="12840">0</div>
+        </div>
+      </div>
+      <div class="stat-trend">+8.4%</div>
+    </div>
+
+    <div class="stat-card reveal" data-animate-delay="80">
+      <div class="stat-left">
+        <div class="stat-icon">👥</div>
+        <div>
+          <div class="stat-label">Active Users</div>
+          <div class="stat-value" data-target="5421">0</div>
+        </div>
+      </div>
+      <div class="stat-trend">+3.1%</div>
+    </div>
+
+    <div class="stat-card reveal" data-animate-delay="160">
+      <div class="stat-left">
+        <div class="stat-icon">🛒</div>
+        <div>
+          <div class="stat-label">New Orders</div>
+          <div class="stat-value" data-target="312">0</div>
+        </div>
+      </div>
+      <div class="stat-trend">-1.2%</div>
+    </div>
+
+    <div class="stat-card reveal" data-animate-delay="240">
+      <div class="stat-left">
+        <div class="stat-icon">⭐</div>
+        <div>
+          <div class="stat-label">Satisfaction</div>
+          <div class="stat-value" data-target="92">0</div>
+        </div>
+      </div>
+      <div class="stat-trend">+0.6%</div>
+    </div>
+  </div>
+
+  <div class="insights-bottom">
+    <!-- Activity / Timeline -->
+    <div class="activity-panel reveal" data-animate-delay="320" aria-live="polite">
+      <h4>Recent Activity</h4>
+      <ul class="activity-list">
+        <li><time>2h ago</time> New order #4576 placed — <strong>John D.</strong></li>
+        <li><time>5h ago</time> Client onboarding completed — <strong>Acme Corp.</strong></li>
+        <li><time>1d ago</time> Server maintenance deployed — <strong>Deploy v1.4</strong></li>
+        <li><time>2d ago</time> New signup — <strong>Meera K.</strong></li>
+      </ul>
+    </div>
+
+    <!-- Progress + mini metrics -->
+    <div class="progress-panel reveal" data-animate-delay="400">
+      <h4>Goals & Progress</h4>
+
+      <div class="progress-item">
+        <div class="progress-meta">
+          <span>Quarterly Sales</span>
+          <strong>68%</strong>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 68%"></div>
+        </div>
+      </div>
+
+      <div class="mini-metrics">
+        <div class="mini">
+          <div class="mini-label">Bounce</div>
+          <div class="mini-value">23%</div>
+        </div>
+        <div class="mini">
+          <div class="mini-label">Avg. Session</div>
+          <div class="mini-value">4m 12s</div>
+        </div>
+        <div class="mini">
+          <div class="mini-label">Conversion</div>
+          <div class="mini-value">6.2%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <div class="full-box">
+          <h3>What’s New?</h3>
+          <ul>
+            <li>✔ Improvements made to the overall layout.</li>
+            <li>✔ New contact queries added.</li>
+            <li>✔ Clean and responsive design implemented.</li>
+          </ul>
+        </div>
+
+        <!-- ===== Project Snapshot (creative + professional) ===== -->
+<section class="snapshot reveal">
+
+  <!-- row: left = progress + quick actions, right = activity + tasks -->
+  <div class="snap-row">
+
+    <!-- LEFT: Progress widgets + quick actions -->
+    <div class="snap-left">
+      <div class="snap-card">
+        <h3>Project Progress</h3>
+        <p class="muted">Overall completion across main modules.</p>
+
+        <div class="progress-list">
+          <div class="prog-item">
+            <div class="label">Frontend</div>
+            <div class="bar">
+              <div class="fill" data-fill="78"></div>
+            </div>
+            <div class="percent">78%</div>
+          </div>
+
+          <div class="prog-item">
+            <div class="label">Backend</div>
+            <div class="bar">
+              <div class="fill" data-fill="62"></div>
+            </div>
+            <div class="percent">62%</div>
+          </div>
+
+          <div class="prog-item">
+            <div class="label">QA</div>
+            <div class="bar">
+              <div class="fill" data-fill="45"></div>
+            </div>
+            <div class="percent">45%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="snap-card quick-actions">
+        <h4>Quick Actions</h4>
+        <div class="actions">
+          <button class="btn small">+ New Task</button>
+          <button class="btn small outline">Assign</button>
+          <button class="btn small">Export</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Activity feed + upcoming tasks -->
+    <div class="snap-right">
+      <div class="snap-card activity">
+        <h3>Recent Activity</h3>
+        <ul class="activity-list">
+          <li><strong>Priya</strong> merged PR #14 <span class="muted">· 2h ago</span></li>
+          <li><strong>Ravi</strong> deployed staging build <span class="muted">· Yesterday</span></li>
+          <li><strong>Akash</strong> updated header styles <span class="muted">· 3 days</span></li>
+          <li><strong>You</strong> created release notes <span class="muted">· 5 days</span></li>
+        </ul>
+      </div>
+
+      <div class="snap-card tasks">
+        <h3>Upcoming Tasks</h3>
+        <ol class="task-list">
+          <li><input type="checkbox" id="t1"><label for="t1">Polish responsive header</label></li>
+          <li><input type="checkbox" id="t2"><label for="t2">API: add user filter</label></li>
+          <li><input type="checkbox" id="t3"><label for="t3">Write unit tests</label></li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+        <p class="footer-note">This dashboard is Dashboard Section to View.</p>
+      </section>
+    </main>
+
+  </div>
+
+
+  <script src="./js/index.js"></script>
+  <script src="./script.js"></script>
+
+</body>
+</html>

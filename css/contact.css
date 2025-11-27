@@ -1,0 +1,267 @@
+
+
+/* grid: 3 equal columns */
+.cc-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+/* card base used by all three columns */
+.cc-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px;
+  border: 1px solid #E6E9EE;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.cc-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(2, 6, 23, 0.06);
+}
+
+/* ---- classic (left) style ---- */
+.cc-classic .classic-title {
+  font-weight: 800;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.classic-item {
+  display: block;
+  padding: 6px 0;
+}
+
+.classic-label {
+  font-weight: 700;
+  color: #0F172A;
+  font-size: 14px;
+}
+
+.classic-value {
+  color: #6B7280;
+  margin-bottom: 6px;
+}
+
+.classic-action {
+  color: #2563EB;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+/* ---- form card (center) ---- */
+.cc-form-card .cc-title {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.cc-form .field {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.cc-form input,
+.cc-form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ee;
+  font-size: 14px;
+  background: transparent;
+  outline: none;
+}
+
+.cc-form label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  color: #6B7280;
+  pointer-events: none;
+  transition: transform 160ms ease, font-size 160ms ease, color 160ms ease;
+}
+
+.cc-form input:focus+label,
+.cc-form textarea:focus+label,
+.cc-form input:not(:placeholder-shown)+label,
+.cc-form textarea:not(:placeholder-shown)+label {
+  transform: translateY(-18px) scale(.88);
+  color: #2563EB;
+}
+
+/* progress + actions */
+.form-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.progress-mini {
+  flex: 1;
+  height: 8px;
+  background: #f3f7ff;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid #eef4ff;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #2563EB, #60A5FA);
+  transition: width 700ms ease;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* buttons */
+.btn.primary {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #2563EB, #1e40af);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn.ghost {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: transparent;
+  color: #2563EB;
+  border: 1px solid rgba(37, 99, 235, 0.08);
+  cursor: pointer;
+}
+
+/* status */
+.cc-status {
+  margin-top: 8px;
+  font-weight: 700;
+  color: green;
+}
+
+/* ---- location card (right) ---- */
+.cc-location .cc-map-wrap {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  height: 160px;
+}
+
+.cc-map-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* cc-link at bottom of location */
+.cc-link {
+  margin-top: auto;
+  color: #2563EB;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* ---- FAQ full width ---- */
+.cc-faq {
+  background: #fff;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #E6E9EE;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.04);
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.faq-item {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 180ms ease;
+}
+
+.faq-q:hover {
+  background: rgba(37, 99, 235, 0.03);
+}
+
+.faq-chev {
+  transition: transform 260ms ease;
+  color: #6B7280;
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 12px;
+  transition: max-height 320ms ease, padding 220ms ease;
+  color: #374151;
+  background: #fff;
+}
+
+.faq-item.open .faq-a {
+  padding: 12px;
+  max-height: 420px;
+}
+
+.faq-item.open .faq-chev {
+  transform: rotate(90deg);
+  color: #2563EB;
+}
+
+/* reveal helper */
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* responsive: stack on small screens */
+@media (max-width: 920px) {
+  .cc-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cc-map-wrap {
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cc-map-wrap {
+    height: 160px;
+  }
+}

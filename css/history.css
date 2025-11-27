@@ -1,0 +1,343 @@
+
+/* container for the new section */
+.unique-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 6px 0;
+}
+
+/* ---------- PART A: Analytics ---------- */
+.analytics {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #fff;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ee;
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.03);
+}
+
+/* KPI blocks */
+.kpis {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.kpi {
+  min-width: 110px;
+  background: linear-gradient(180deg, #fff, #fbfdff);
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #eef2ff;
+  text-align: center;
+}
+
+.kpi-value {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.kpi-label {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* mini chart area */
+.mini-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.spark {
+  width: 160px;
+  height: 46px;
+}
+
+.sparkline {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  transition: stroke-dashoffset 900ms ease;
+}
+
+/* when JS triggers .draw the line reveals */
+.sparkline.draw {
+  stroke-dashoffset: 0;
+}
+
+/* chart label */
+.chart-label {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ---------- PART B: Team ---------- */
+.team {
+  background: #fff;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ee;
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.03);
+}
+
+.team h3 {
+  margin-bottom: 10px;
+}
+
+.team-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.member {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  min-width: 160px;
+  background: linear-gradient(180deg, #fff, #fbfdff);
+  border: 1px solid #f1f5f9;
+}
+
+.avatar.small {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #2563eb, #3b82f6);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.meta .name {
+  font-weight: 700;
+}
+
+.meta .role {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* ---------- PART C: Timeline ---------- */
+.timeline {
+  background: #fff;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ee;
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.03);
+}
+
+.timeline h3 {
+  margin-bottom: 10px;
+}
+
+.timeline ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.timeline li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.time-left {
+  min-width: 80px;
+  font-weight: 700;
+  color: #374151;
+  font-size: 13px;
+}
+
+.time-right {
+  flex: 1;
+}
+
+.milestone {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.progress-bar {
+  background: #f1f5f9;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  transition: width 900ms ease;
+}
+
+/* small muted helper */
+.muted {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 920px) {
+  .analytics {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mini-chart {
+    align-items: flex-start;
+  }
+
+  .kpis {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .team-grid {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .kpi {
+    min-width: 96px;
+    padding: 8px;
+  }
+
+  .avatar.small {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+
+
+/* ===== History Progress Section ===== */
+.history-progress-section {
+  margin: 2rem 0;
+  padding: 1rem;
+}
+
+.history-title {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: #123;
+}
+
+/* Timeline track */
+.history-timeline {
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #dce6ff, #eff3ff);
+  padding: 1rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(12, 20, 40, 0.08);
+}
+
+.h-point {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  position: relative;
+  transition: color 300ms ease;
+}
+
+.h-point.active {
+  color: #3f84ff;
+  font-size: 1.05rem;
+}
+
+.h-point.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: #3f84ff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(63, 132, 255, 0.8);
+}
+
+/* History card */
+.history-card {
+  margin-top: 2rem;
+  padding: 1.3rem;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(12, 20, 40, 0.06);
+  animation: fadeSlide 400ms ease forwards;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.history-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+  color: #123;
+}
+
+.history-card p {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.55;
+}
+
+/* Stats box */
+.history-stats {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.stat-box {
+  background: #f1f5ff;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1;
+}
+
+.stat-number {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #3f84ff;
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #64748b;
+}

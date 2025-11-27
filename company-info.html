@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task</title>
+  <link rel="stylesheet" href="./css/styles.css">
+
+  <link rel="stylesheet" href="./css/company-info.css">
+
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="sidebar">
+      <h2>My Website</h2>
+      <ul>
+        <li><a href="./index.html" >Dashboard</a></li>
+        <li><a href="#" class="active">Company Info</a></li>
+        <li><a href="./history.html">History</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+
+      </ul>
+    </div>
+
+    <div class="main">
+
+      <div class="topbar">
+  <div class="search-wrap" id="searchWrap">
+    <label for="navSearch" class="visually-hidden">Search site</label>
+    <div class="search-input-group">
+      <input id="navSearch" class="search-box" type="text" placeholder="Search or jump to..." aria-autocomplete="list" aria-controls="navList" aria-expanded="false" autocomplete="off" />
+      <button id="searchToggle" class="search-btn" aria-label="Open quick navigation">▾</button>
+    </div>
+
+    <ul id="navList" class="search-list" role="listbox" tabindex="-1" aria-label="Quick navigation" hidden>
+      <!-- JS will populate items; listed here as fallback -->
+      <li role="option" data-href="./index.html">Dashboard</li>
+      <li role="option" data-href="./company-info.html">Company Info</li>
+      <li role="option" data-href="./history.html">History</li>
+      <li role="option" data-href="./contact.html">Contact</li>
+    </ul>
+  </div>
+</div>
+
+
+     <section id="home" class="page-section dashboard-updated">
+
+  <!-- HERO / Intro -->
+  <div class="hero-creative">
+    <div class="hero-left">
+      <h1 class="hero-title">Clean. Professional. Smooth.</h1>
+      <p class="hero-lead">A modern, lightweight dashboard section that looks professional and is friendly for beginners.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="./company-info.html">Explore Company →</a>
+        <a class="btn-ghost" href="./contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <!-- animated stats -->
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-number" data-target="120">0</div>
+          <div class="stat-label">Clients</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-target="45">0</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-target="8">0</div>
+          <div class="stat-label">Years</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES GRID -->
+  <div class="features-grid">
+    <article class="feature-card reveal">
+      <h3>Fast & Lightweight</h3>
+      <p>Optimised for performance. Minimal code, maximum clarity.</p>
+    </article>
+
+    <article class="feature-card reveal">
+      <h3>Responsive</h3>
+      <p>Looks great on desktop and mobile with clean stacking behavior.</p>
+    </article>
+
+    <article class="feature-card reveal">
+      <h3>Easy to Customize</h3>
+      <p>Simple variables and clear classes so you can change styles quickly.</p>
+    </article>
+  </div>
+
+
+
+ <!-- TESTIMONIALS (sliding cards) -->
+<div class="testimonials reveal" aria-label="User testimonials">
+  <h3>What users say</h3>
+
+  <div class="testi-carousel" tabindex="0" aria-roledescription="carousel" aria-label="Testimonials carousel">
+    <div class="testi-track">
+      <!-- Slide 1 -->
+     
+
+      <!-- Slide 1 -->
+<article class="testi-card">
+  <div class="testi-header">
+    <img src="https://i.pravatar.cc/150?img=12" class="testi-avatar" alt="Priya">
+    <div class="testi-user-info">
+      <h4 class="testi-name">Priya</h4>
+      <p class="testi-role">Product Manager</p>
+    </div>
+    <div class="testi-icons">
+      <span class="ti-badge">⭐</span>
+    </div>
+  </div>
+  <p class="quote">“Clean layout and easy to use. Helped us ship faster.”</p>
+</article>
+
+<!-- Slide 2 -->
+<article class="testi-card">
+  <div class="testi-header">
+    <img src="https://i.pravatar.cc/150?img=35" class="testi-avatar" alt="Ravi">
+    <div class="testi-user-info">
+      <h4 class="testi-name">Ravi</h4>
+      <p class="testi-role">UX Lead</p>
+    </div>
+    <div class="testi-icons">
+      <span class="ti-badge">⭐</span>
+      <span class="ti-badge">✔</span>
+    </div>
+  </div>
+  <p class="quote">“Simple, modern and very responsive.”</p>
+</article>
+
+<!-- Slide 3 -->
+<article class="testi-card">
+  <div class="testi-header">
+    <img src="https://i.pravatar.cc/150?img=20" class="testi-avatar" alt="Akash">
+    <div class="testi-user-info">
+      <h4 class="testi-name">Akash</h4>
+      <p class="testi-role">Developer</p>
+    </div>
+    <div class="testi-icons">
+      <span class="ti-badge">✔</span>
+    </div>
+  </div>
+  <p class="quote">“Looks professional and is easy to customize.”</p>
+</article>
+
+<!-- Slide 4 -->
+<article class="testi-card">
+  <div class="testi-header">
+    <img src="https://i.pravatar.cc/150?img=35" class="testi-avatar" alt="Ravi">
+    <div class="testi-user-info">
+      <h4 class="testi-name">Shankar</h4>
+      <p class="testi-role">Test Lead</p>
+    </div>
+    <div class="testi-icons">
+      <span class="ti-badge">⭐</span>
+      <span class="ti-badge">✔</span>
+    </div>
+  </div>
+  <p class="quote">“Simple, modern and very responsive.”</p>
+</article>
+
+
+
+
+      <!-- (Add more slides here if needed) -->
+    </div>
+  </div>
+
+  
+  <!-- Dots -->
+  <div class="testi-dots" role="tablist" aria-label="Select testimonial">
+    <!-- dots are inserted by JS if you prefer; static examples provided -->
+    <button class="dot" aria-label="Show testimonial 1" aria-selected="true"></button>
+    <button class="dot" aria-label="Show testimonial 2" aria-selected="false"></button>
+    <button class="dot" aria-label="Show testimonial 3" aria-selected="false"></button>
+  </div>
+</div>
+
+
+</section>
+
+  <!-- RECENT / NEWS -->
+  <div class="recent-updates reveal">
+    <h3>Recent Updates</h3>
+    <ul>
+      <li>Layout improvements and accessibility fixes — <span class="muted">Today</span></li>
+      <li>Added contact form and quick support area — <span class="muted">2 days ago</span></li>
+      <li>Dashboard performance optimizations — <span class="muted">1 week ago</span></li>
+    </ul>
+  </div>
+
+
+    </div>
+
+  </div>
+
+  <script src="./js/company-info.js"></script>
+  
+  <script src="./script.js"></script>
+
+</body>
+</html>

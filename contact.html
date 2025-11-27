@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task</title>
+  <link rel="stylesheet" href="./css/styles.css">
+
+  <link rel="stylesheet" href="./css/contact.css">
+
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="sidebar">
+      <h2>My Website</h2>
+      <ul>
+        <li><a href="./index.html" >Dashboard</a></li>
+        <li><a href="./company-info.html">Company Info</a></li>
+        <li><a href="./history.html">History</a></li>
+        <li><a href="#" class="active">Contact</a></li>
+
+      </ul>
+    </div>
+
+    <div class="main">
+
+     <div class="topbar">
+  <div class="search-wrap" id="searchWrap">
+    <label for="navSearch" class="visually-hidden">Search site</label>
+    <div class="search-input-group">
+      <input id="navSearch" class="search-box" type="text" placeholder="Search or jump to..." aria-autocomplete="list" aria-controls="navList" aria-expanded="false" autocomplete="off" />
+      <button id="searchToggle" class="search-btn" aria-label="Open quick navigation">▾</button>
+    </div>
+
+    <ul id="navList" class="search-list" role="listbox" tabindex="-1" aria-label="Quick navigation" hidden>
+      <!-- JS will populate items; listed here as fallback -->
+      <li role="option" data-href="./index.html">Dashboard</li>
+      <li role="option" data-href="./company-info.html">Company Info</li>
+      <li role="option" data-href="./history.html">History</li>
+      <li role="option" data-href="./contact.html">Contact</li>
+    </ul>
+  </div>
+</div>
+
+
+   
+
+      <!-- ===== Compact 3-column contact layout + full-width FAQ ===== -->
+<section class="contact-compact">
+
+  <!-- TOP ROW: three matching columns -->
+  <div class="cc-row">
+
+    <!-- COLUMN 1: Classic Contact (older style look) -->
+    <div class="cc-card cc-classic reveal">
+      <div class="classic-title">Contact</div>
+
+      <div class="classic-item">
+        <div class="classic-label">Email</div>
+        <div class="classic-value">Bharath@gmail.com</div>
+        <a href="mailto:hello@mywebsite.com" class="classic-action">Send email</a>
+      </div>
+
+      <hr>
+
+      <div class="classic-item">
+        <div class="classic-label">Phone</div>
+        <div class="classic-value">+91 91592 57470</div>
+        <a href="tel:+919159257470" class="classic-action">Call now</a>
+      </div>
+    </div>
+
+    <!-- COLUMN 2: Message form (center) -->
+    <div class="cc-card cc-form-card reveal">
+      <h3 class="cc-title">Send a message</h3>
+
+      <form id="ccForm" class="cc-form" novalidate>
+        <div class="field">
+          <input id="cc-name" name="name" type="text" required placeholder=" " />
+          <label for="cc-name">Full name</label>
+        </div>
+
+        <div class="field">
+          <input id="cc-email" name="email" type="email" required placeholder=" " />
+          <label for="cc-email">Email address</label>
+        </div>
+
+        <div class="field">
+          <textarea id="cc-message" name="message" rows="4" required placeholder=" "></textarea>
+          <label for="cc-message">Your message</label>
+        </div>
+
+        <div class="form-row">
+          <div class="progress-mini" aria-hidden>
+            <div class="progress-fill"></div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn primary" type="submit">Send</button>
+            <button class="btn ghost" type="button" id="ccClear">Clear</button>
+          </div>
+        </div>
+
+        <div id="ccStatus" class="cc-status" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <!-- COLUMN 3: Location (iframe inside card) -->
+    <div class="cc-card cc-location reveal">
+      <div class="classic-title">Location</div>
+      <p class="muted">Elampillai, Salem</p>
+
+      <div class="cc-map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=Salem,+Tamil+Nadu,+India&z=13&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Office location - Salem"
+        ></iframe>
+      </div>
+
+      <a class="cc-link" href="https://maps.google.com?q=Salem+Tamil+Nadu" target="_blank" rel="noopener">Open in maps →</a>
+    </div>
+  </div>
+
+  <!-- BOTTOM: full-width FAQ -->
+  <div class="cc-faq reveal" style="margin-top:18px">
+    <h3>Frequently asked questions</h3>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>How fast will you reply?</span>
+          <span class="faq-chev">▸</span>
+        </button>
+        <div class="faq-a">
+          <p>We usually reply within 24–48 business hours. For urgent matters call during business hours.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Can I get a custom quote?</span>
+          <span class="faq-chev">▸</span>
+        </button>
+        <div class="faq-a">
+          <p>Yes — send basic requirements through the form and we’ll prepare a simple estimate.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Do you provide ongoing support?</span>
+          <span class="faq-chev">▸</span>
+        </button>
+        <div class="faq-a">
+          <p>We provide monthly support plans and ad-hoc support. Tell us your needs and we’ll recommend an option.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+    </div>
+
+  </div>
+
+
+  <script src="./js/contact.js"></script>
+  
+  <script src="./script.js"></script>
+</body>
+</html>
