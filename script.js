@@ -1,148 +1,162 @@
-// Quick navigation search widget
+// LOADER SCRIPT
+
+
+/* ======== AUTO-HIDE AFTER 5 SECONDS ======== */
+setTimeout(() => {
+  const el = document.getElementById("site-loader");
+  if (!el) return;
+  el.classList.add("hide");
+
+  setTimeout(() => el.remove(), 400);
+}, 5000);
+
+
+// SEACRH BAR
+
+
 (function () {
-  const items = [
-    { title: 'Dashboard', href: './index.html', desc: 'Main dashboard' },
-    { title: 'Company Info', href: './company-info.html', desc: 'About the company' },
-    { title: 'History', href: './history.html', desc: 'Company timeline' },
-    { title: 'Contact', href: './contact.html', desc: 'Contact page' }
-  ];
+  const box = document.getElementById("searchBar");
+  const input = box.querySelector(".search-bar-input");
+  const dropdowns = box.querySelector("#searchBarDropdowns");
+  const buttons = Array.from(box.querySelectorAll(".search-bar-dd-btn"));
 
-  const wrap = document.getElementById('searchWrap');
-  if (!wrap) return;
+  function openDD() {
+    dropdowns.classList.add("open");
+  }
 
-  const input = wrap.querySelector('#navSearch');
-  const list = wrap.querySelector('#navList');
-  const toggle = wrap.querySelector('#searchToggle');
+  function closeDD() {
+    dropdowns.classList.remove("open");
+  }
 
-  // Render items
-  function renderList(filtered = items) {
-    list.innerHTML = '';
-    filtered.forEach((it, idx) => {
-      const li = document.createElement('li');
-      li.setAttribute('role', 'option');
-      li.dataset.href = it.href;
-      li.tabIndex = -1;
-      li.innerHTML = `<div><span>${it.title}</span><small>${it.desc}</small></div>`;
-      li.addEventListener('click', () => navigateTo(it.href));
-      li.addEventListener('mouseenter', () => setSelectedIndex(idx));
-      list.appendChild(li);
+  // Show dropdown when focusing
+  input.addEventListener("focus", openDD);
+
+  // Filter buttons based on input
+  input.addEventListener("input", () => {
+    const query = input.value.toLowerCase();
+
+    buttons.forEach(btn => {
+      btn.style.display = btn.textContent.toLowerCase().includes(query)
+        ? "block"
+        : "none";
     });
-    // reset selection
-    selectedIndex = -1;
-  }
 
-  // Navigation helper
-  function navigateTo(href) {
-    // optional: you could check window.location and only set location if different
-    window.location.href = href;
-  }
-
-  // Filter helper
-  function filterList(q) {
-    const qn = q.trim().toLowerCase();
-    if (!qn) return items.slice();
-    return items.filter(i => i.title.toLowerCase().includes(qn) || i.desc.toLowerCase().includes(qn));
-  }
-
-  // Keyboard navigation
-  let selectedIndex = -1;
-  function setSelectedIndex(i) {
-    const children = Array.from(list.children);
-    children.forEach((c, idx) => {
-      const sel = idx === i;
-      c.setAttribute('aria-selected', sel ? 'true' : 'false');
-      if (sel) c.scrollIntoView({ block: 'nearest' });
-    });
-    selectedIndex = i;
-  }
-
-  input.addEventListener('input', (e) => {
-    const q = e.target.value;
-    const filtered = filterList(q);
-    if (filtered.length) {
-      renderList(filtered);
-      list.hidden = false;
-      input.setAttribute('aria-expanded', 'true');
-    } else {
-      list.hidden = true;
-      input.setAttribute('aria-expanded', 'false');
-    }
+    openDD(); // keep open while typing
   });
 
-  // toggle button opens/closes list and focuses input
-  toggle.addEventListener('click', () => {
-    if (list.hidden) {
-      renderList(items);
-      list.hidden = false;
-      input.setAttribute('aria-expanded', 'true');
-      input.focus();
-    } else {
-      list.hidden = true;
-      input.setAttribute('aria-expanded', 'false');
-    }
+  // Clicking a button → go to page
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      window.location.href = btn.dataset.link;
+    });
   });
 
-  // keyboard handling
-  input.addEventListener('keydown', (e) => {
-    const visibleItems = Array.from(list.children);
-    if (e.key === 'ArrowDown') {
+  // Press Enter → go to best match
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
       e.preventDefault();
-      if (visibleItems.length === 0) return;
-      const next = Math.min(selectedIndex + 1, visibleItems.length - 1);
-      setSelectedIndex(next);
-      visibleItems[next].focus();
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      if (visibleItems.length === 0) return;
-      const prev = Math.max(selectedIndex - 1, 0);
-      setSelectedIndex(prev);
-      visibleItems[prev].focus();
-    } else if (e.key === 'Enter') {
-      e.preventDefault();
-      if (selectedIndex >= 0 && visibleItems[selectedIndex]) {
-        const href = visibleItems[selectedIndex].dataset.href;
-        if (href) navigateTo(href);
-      } else if (visibleItems.length === 1) {
-        // if only one suggestion, go there on Enter
-        navigateTo(visibleItems[0].dataset.href);
+
+      const q = input.value.toLowerCase();
+
+      // Exact match check
+      let exact = buttons.find(b => b.textContent.toLowerCase() === q);
+
+      if (exact) {
+        window.location.href = exact.dataset.link;
+        return;
       }
-    } else if (e.key === 'Escape') {
-      list.hidden = true;
-      input.setAttribute('aria-expanded', 'false');
-      input.blur();
+
+      // Otherwise go to first visible button
+      let firstVisible = buttons.find(b => b.style.display !== "none");
+
+      if (firstVisible) {
+        window.location.href = firstVisible.dataset.link;
+      }
     }
   });
 
-  // allow arrow keys on list items and Enter to navigate
-  list.addEventListener('keydown', (e) => {
-    const itemsEls = Array.from(list.children);
-    const idx = itemsEls.indexOf(document.activeElement);
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      const next = Math.min(idx + 1, itemsEls.length - 1);
-      itemsEls[next].focus(); setSelectedIndex(next);
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      const prev = Math.max(idx - 1, 0);
-      itemsEls[prev].focus(); setSelectedIndex(prev);
-    } else if (e.key === 'Enter') {
-      e.preventDefault();
-      const href = document.activeElement.dataset.href;
-      if (href) navigateTo(href);
-    } else if (e.key === 'Escape') {
-      list.hidden = true; input.setAttribute('aria-expanded', 'false'); input.focus();
-    }
+  // Close when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!box.contains(e.target)) closeDD();
   });
 
-  // close if clicked outside
-  document.addEventListener('click', (ev) => {
-    if (!wrap.contains(ev.target)) {
-      list.hidden = true;
-      input.setAttribute('aria-expanded', 'false');
+  // ESC closes
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeDD();
+  });
+})();
+
+
+
+
+/* =========================
+   Namespaced modal open/close behavior
+   - opens on #openLogin click
+   - closes on escape / overlay click / close button
+   - focus into modal when opened, returns focus on close
+   - toggles body.login-section--open for scroll lock
+   ========================= */
+
+(function () {
+  const openBtn = document.getElementById("openLogin");
+  const overlay = document.getElementById("loginModal"); // .login-section__overlay
+  const dialog = overlay.querySelector(".login-section__dialog");
+  const closeBtn = document.getElementById("closeLogin");
+  const firstFocusable = overlay.querySelector('.form .input, .form button, .card .blind_input') ;
+  let lastFocused = null;
+
+  function openModal() {
+    lastFocused = document.activeElement;
+    overlay.classList.add("open");
+    overlay.setAttribute("aria-hidden", "false");
+    document.body.classList.add("login-section--open");
+    // small delay then focus first input
+    setTimeout(() => {
+      if (firstFocusable) firstFocusable.focus();
+    }, 160);
+    if (openBtn) openBtn.setAttribute("aria-expanded", "true");
+    document.addEventListener("keydown", onKeyDown);
+  }
+
+  function closeModal() {
+    overlay.classList.remove("open");
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("login-section--open");
+    if (openBtn) openBtn.setAttribute("aria-expanded", "false");
+    if (lastFocused) lastFocused.focus();
+    document.removeEventListener("keydown", onKeyDown);
+  }
+
+  function onKeyDown(e) {
+    if (e.key === "Escape") {
+      closeModal();
     }
+    // note: basic Tab behavior left to browser; for full focus trap use a11y library
+  }
+
+  // open handlers
+  if (openBtn) openBtn.addEventListener("click", openModal);
+
+  // close button handler
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+
+  // click outside to close
+  overlay.addEventListener("mousedown", function (ev) {
+    if (ev.target === overlay) closeModal();
   });
 
-  // initial render but keep hidden until use
-  renderList(items);
-  list.hidden = true;
+  // stop propagation inside dialog area
+  dialog.addEventListener("mousedown", function (ev) {
+    ev.stopPropagation();
+  });
+
+  // submit button behavior (closes modal as a placeholder)
+  const submitBtn = overlay.querySelector(".submit");
+  if (submitBtn) {
+    submitBtn.addEventListener("click", function () {
+      // place your validation / ajax here
+      // right now we close to simulate success
+      closeModal();
+    });
+  }
 })();

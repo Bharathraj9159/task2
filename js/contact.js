@@ -72,3 +72,76 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+
+
+
+/* Sunscribe form — simple client-side validation + simulated send
+   Replace sendEmailSimulation with real API call when ready.
+*/
+(function () {
+  const form = document.getElementById('sunscribeForm');
+  const emailInput = document.getElementById('sunscribeEmail');
+  const btn = document.getElementById('sunscribeBtn');
+  const msg = document.getElementById('sunscribeMsg');
+
+  // Simple email validator
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  // Simulate sending (returns Promise)
+  function sendEmailSimulation(email) {
+    return new Promise((resolve, reject) => {
+      // simulate network delay
+      setTimeout(() => {
+        // 95% success chance
+        if (Math.random() < 0.95) resolve({ ok: true });
+        else reject(new Error('Network error'));
+      }, 900);
+    });
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const val = emailInput.value.trim();
+
+    msg.style.color = '#000';
+    if (!isValidEmail(val)) {
+      msg.textContent = 'Please enter a valid email address.';
+      msg.style.color = '#8b1a1a';
+      emailInput.focus();
+      return;
+    }
+
+    // UI: show sending
+    btn.disabled = true;
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending...';
+    msg.textContent = '';
+
+    try {
+      await sendEmailSimulation(val);
+      msg.style.color = '#0f5132';
+      msg.textContent = 'Thanks — check your inbox!';
+      emailInput.value = '';
+    } catch (err) {
+      msg.style.color = '#8b1a1a';
+      msg.textContent = 'Oops — something went wrong. Try again.';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = originalText;
+    }
+  }
+
+  if (form) {
+    form.addEventListener('submit', handleSubmit);
+  }
+
+  // allow Enter to submit from input
+  emailInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      form.requestSubmit();
+    }
+  });
+
+})();

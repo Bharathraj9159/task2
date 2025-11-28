@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Task</title>
-  <link rel="stylesheet" href="./css/styles.css">
 
   <link rel="stylesheet" href="./css/history.css">
+  
+  <link rel="stylesheet" href="./css/styles.css">
 
 
 </head>
@@ -28,154 +29,623 @@
 
     <div class="main">
 
-      <div class="topbar">
-  <div class="search-wrap" id="searchWrap">
-    <label for="navSearch" class="visually-hidden">Search site</label>
-    <div class="search-input-group">
-      <input id="navSearch" class="search-box" type="text" placeholder="Search or jump to..." aria-autocomplete="list" aria-controls="navList" aria-expanded="false" autocomplete="off" />
-      <button id="searchToggle" class="search-btn" aria-label="Open quick navigation">▾</button>
-    </div>
+            <!-- SEARCH BAR SECTION -->
 
-    <ul id="navList" class="search-list" role="listbox" tabindex="-1" aria-label="Quick navigation" hidden>
-      <!-- JS will populate items; listed here as fallback -->
-      <li role="option" data-href="./index.html">Dashboard</li>
-      <li role="option" data-href="./company-info.html">Company Info</li>
-      <li role="option" data-href="./history.html">History</li>
-      <li role="option" data-href="./contact.html">Contact</li>
-    </ul>
+      
+  <div class="search-bar-wave-group" id="searchBar">
+  <input class="search-bar-input" type="text" required aria-label="Search" />
+  <span class="search-bar-bar"></span>
+
+  <label class="search-bar-label">
+    <span style="--index:0" class="search-bar-label-char">S</span>
+    <span style="--index:1" class="search-bar-label-char">e</span>
+    <span style="--index:2" class="search-bar-label-char">a</span>
+    <span style="--index:3" class="search-bar-label-char">r</span>
+    <span style="--index:4" class="search-bar-label-char">c</span>
+    <span style="--index:5" class="search-bar-label-char">h</span>
+  </label>
+
+  <!-- Dropdown menu buttons -->
+  <div class="search-bar-dropdowns" id="searchBarDropdowns">
+
+    <button class="search-bar-dd-btn" data-index="0" data-link="index.html">Dashboard</button>
+    <button class="search-bar-dd-btn" data-index="1" data-link="company-info.html">Company Info</button>
+    <button class="search-bar-dd-btn" data-index="2" data-link="history.html">History</button>
+    <button class="search-bar-dd-btn" data-index="3" data-link="contact.html">Contact</button>
+
   </div>
 </div>
 
 
-      <!-- ===== Different Section: Analytics + Team + Timeline ===== -->
-<section class="unique-section">
 
-  <!-- PART A: Mini Analytics (sparkline-like + small KPIs) -->
-  <div class="analytics">
-    <div class="kpis">
-      <div class="kpi">
-        <div class="kpi-value" data-target="874">0</div>
-        <div class="kpi-label">Monthly Visits</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-value" data-target="124">0</div>
-        <div class="kpi-label">New Leads</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-value" data-target="3.8">0</div>
-        <div class="kpi-label">Avg. Time (min)</div>
-      </div>
-    </div>
 
-    <!-- small sparkline built with inline SVG -->
-    <div class="mini-chart">
-      <svg viewBox="0 0 120 40" preserveAspectRatio="none" class="spark">
-        <!-- polyline will be animated by CSS stroke-dashoffset for a drawing effect -->
-        <polyline points="0,30 20,24 40,12 60,18 80,10 100,20 120,14" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sparkline"/>
-      </svg>
-      <div class="chart-label">Visits last 7 days</div>
+<!-- ===== trigger button — put this anywhere on your page ===== -->
+<div style="padding:20px;">
+  <button id="openLogin" aria-haspopup="dialog" aria-controls="loginModal" aria-expanded="false"
+    style="padding:10px 14px;border-radius:8px;background:#eca60e;color:#ffffff;border:0;cursor:pointer;">
+    Admin
+  </button>
+</div>
+
+<!-- ===== Namespaced Modal markup (hidden by default) ===== -->
+<div id="loginModal" class="login-section__overlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="login-section__dialog" role="document" aria-labelledby="loginTitle">
+    <div class="login-section__content">
+
+      <!-- close button -->
+      <button class="login-section__close" aria-label="Close login dialog" id="closeLogin">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6L6 18"></path><path d="M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- YOUR ORIGINAL CARD HTML (kept intact) -->
+      <div class="card" role="group" aria-labelledby="loginTitle">
+        <input
+          value=""
+          class="blind-check"
+          type="checkbox"
+          id="blind-input"
+          name="blindcheck"
+          hidden=""
+        />
+
+        <label for="blind-input" class="blind_input">
+          <span class="hide">Hide</span>
+          <span class="show">Show</span>
+        </label>
+
+        <form class="form" onsubmit="return false;">
+          <div class="title" id="loginTitle">Sign In</div>
+
+          <label class="label_input" for="email-input">Email</label>
+          <input
+            spellcheck="false"
+            class="input"
+            type="email"
+            name="email"
+            id="email-input"
+          />
+
+          <div class="frg_pss">
+            <label class="label_input" for="password-input">Password</label>
+            <a href="#">Forgot password?</a>
+          </div>
+          <input
+            spellcheck="false"
+            class="input"
+            type="text"
+            name="password"
+            id="password-input"
+          />
+          <button class="submit" type="button">Submit</button>
+        </form>
+
+        <label for="blind-input" class="avatar" aria-hidden="true">
+          <!-- svg monkey simplified (kept same IDs and classes) -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            viewBox="0 0 64 64"
+            id="monkey"
+          >
+            <ellipse cx="53.7" cy="33" rx="8.3" ry="8.2" fill="#89664c"></ellipse>
+            <ellipse cx="53.7" cy="33" rx="5.4" ry="5.4" fill="#ffc5d3"></ellipse>
+            <ellipse cx="10.2" cy="33" rx="8.2" ry="8.2" fill="#89664c"></ellipse>
+            <ellipse cx="10.2" cy="33" rx="5.4" ry="5.4" fill="#ffc5d3"></ellipse>
+            <g fill="#89664c">
+              <path
+                d="m43.4 10.8c1.1-.6 1.9-.9 1.9-.9-3.2-1.1-6-1.8-8.5-2.1 1.3-1 2.1-1.3 2.1-1.3-20.4-2.9-30.1 9-30.1 19.5h46.4c-.7-7.4-4.8-12.4-11.8-15.2"
+              ></path>
+              <path
+                d="m55.3 27.6c0-9.7-10.4-17.6-23.3-17.6s-23.3 7.9-23.3 17.6c0 2.3.6 4.4 1.6 6.4-1 2-1.6 4.2-1.6 6.4 0 9.7 10.4 17.6 23.3 17.6s23.3-7.9 23.3-17.6c0-2.3-.6-4.4-1.6-6.4 1-2 1.6-4.2 1.6-6.4"
+              ></path>
+            </g>
+            <path
+              d="m52 28.2c0-16.9-20-6.1-20-6.1s-20-10.8-20 6.1c0 4.7 2.9 9 7.5 11.7-1.3 1.7-2.1 3.6-2.1 5.7 0 6.1 6.6 11 14.7 11s14.7-4.9 14.7-11c0-2.1-.8-4-2.1-5.7 4.4-2.7 7.3-7 7.3-11.7"
+              fill="#e0ac7e"
+            ></path>
+            <g fill="#3b302a" class="monkey-eye-nose">
+              <path
+                d="m35.1 38.7c0 1.1-.4 2.1-1 2.1-.6 0-1-.9-1-2.1 0-1.1.4-2.1 1-2.1.6.1 1 1 1 2.1"
+              ></path>
+              <path
+                d="m30.9 38.7c0 1.1-.4 2.1-1 2.1-.6 0-1-.9-1-2.1 0-1.1.4-2.1 1-2.1.5.1 1 1 1 2.1"
+              ></path>
+              <ellipse
+                cx="40.7"
+                cy="31.7"
+                rx="3.5"
+                ry="4.5"
+                class="monkey-eye-r"
+              ></ellipse>
+              <ellipse
+                cx="23.3"
+                cy="31.7"
+                rx="3.5"
+                ry="4.5"
+                class="monkey-eye-l"
+              ></ellipse>
+            </g>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            viewBox="0 0 64 64"
+            id="monkey-hands"
+          >
+            <path
+              fill="#89664C"
+              d="M9.4,32.5L2.1,61.9H14c-1.6-7.7,4-21,4-21L9.4,32.5z"
+            ></path>
+            <path
+              fill="#FFD6BB"
+              d="M15.8,24.8c0,0,4.9-4.5,9.5-3.9c2.3,0.3-7.1,7.6-7.1,7.6s9.7-8.2,11.7-5.6c1.8,2.3-8.9,9.8-8.9,9.8
+      s10-8.1,9.6-4.6c-0.3,3.8-7.9,12.8-12.5,13.8C11.5,43.2,6.3,39,9.8,24.4C11.6,17,13.3,25.2,15.8,24.8"
+            ></path>
+            <path
+              fill="#89664C"
+              d="M54.8,32.5l7.3,29.4H50.2c1.6-7.7-4-21-4-21L54.8,32.5z"
+            ></path>
+            <path
+              fill="#FFD6BB"
+              d="M48.4,24.8c0,0-4.9-4.5-9.5-3.9c-2.3,0.3,7.1,7.6,7.1,7.6s-9.7-8.2-11.7-5.6c-1.8,2.3,8.9,9.8,8.9,9.8
+      s-10-8.1-9.7-4.6c0.4,3.8,8,12.8,12.6,13.8c6.6,1.3,11.8-2.9,8.3-17.5C52.6,17,50.9,25.2,48.4,24.8"
+            ></path>
+          </svg>
+        </label>
+      </div>
+      <!-- end card -->
+
     </div>
   </div>
+</div>
 
 
+<!-- Company History Card -->
+
+
+    <h2>Our History</h2>
+<section class="history-card1-section">
 
   
 
-  <!-- PART B: Team quick-preview -->
-  <div class="team">
-    <h3>Team on this Project</h3>
-    <div class="team-grid">
-      <div class="member">
-        <div class="avatar small">PR</div>
-        <div class="meta">
-          <div class="name">Priya</div>
-          <div class="role muted">Designer</div>
-        </div>
+  <div class="history-card1-container">
+
+
+    <!-- CARD 1 -->
+    <div class="history-card1">
+      <div class="history-card1-iconBox">
+        <svg class="svg-icon dartboard" viewBox="0 0 20 20">
+          <path d="M14.613,10c0,0.23-0.188,0.419-0.419,0.419H10.42v3.774c0,0.23-0.189,0.42-0.42,0.42s-0.419-0.189-0.419-0.42v-3.774H5.806c-0.23,0-0.419-0.189-0.419-0.419s0.189-0.419,0.419-0.419h3.775V5.806c0-0.23,0.189-0.419,0.419-0.419s0.42,0.189,0.42,0.419v3.775h3.774C14.425,9.581,14.613,9.77,14.613,10"></path>
+        </svg>
+        <svg class="svg-icon eyehole" viewBox="0 0 20 20">
+          <path d="M17.659,9.597h-1.224c-0.199-3.235-2.797-5.833-6.032-6.033V2.341c0-0.222-0.182-0.403-0.403-0.403S9.597,2.119,9.597,2.341v1.223c-3.235,0.2-5.833,2.798-6.033,6.033H2.341c-0.222,0-0.403,0.182-0.403,0.403s0.182,0.403,0.403,0.403h1.223c0.2,3.235,2.798,5.833,6.033,6.032v1.224c0,0.222,0.182,0.403,0.403,0.403s0.403-0.182,0.403-0.403v-1.224c3.235-0.199,5.833-2.797,6.032-6.032h1.224c0.222,0,0.403-0.182,0.403-0.403S17.881,9.597,17.659,9.597"></path>
+        </svg>
+        <svg class="svg-icon batman">
+          <path class="svg-fill-primary" d="M86.578,41.004s-8.219,.295-8.607,7.685c0,0-9.824-4.379-11.571,7.874,0,0-8.653-5.402-14.586,9.744l-1.861-3.908-1.861,3.908c-5.933-15.146-14.586-9.744-14.586-9.744-1.752-12.253-11.571-7.874-11.571-7.874-.366-6.927-7.609-7.621-8.514-7.68,11.643,.442,15.904-7.314,15.904-7.314,3.015,13.499,14.097,14.603,14.097,14.603l2.43-9.335,1.461,4.379h5.28l1.457-4.379,2.43,9.335s11.087-1.103,14.102-14.603c0,0,4.282,7.798,15.996,7.31Z"></path>
+        </svg>
       </div>
 
-      <div class="member">
-        <div class="avatar small">RA</div>
-        <div class="meta">
-          <div class="name">Ravi</div>
-          <div class="role muted">Backend</div>
-        </div>
-      </div>
-
-      <div class="member">
-        <div class="avatar small">AK</div>
-        <div class="meta">
-          <div class="name">Akash</div>
-          <div class="role muted">Frontend</div>
-        </div>
-      </div>
-
-      <div class="member">
-        <div class="avatar small">BR</div>
-        <div class="meta">
-          <div class="name">You</div>
-          <div class="role muted">Lead</div>
-        </div>
+      <div class="history-card1-info">
+        <span>Our Journey</span>
+        <p>From a small idea to a strong brand, our company has grown with passion and innovation.</p>
+        <a href="#" class="history-card1-btn">Read More</a>
       </div>
     </div>
-  </div>
 
-  <!-- PART C: Project Timeline / Milestones -->
-  <div class="timeline">
-    <h3>Project Timeline</h3>
-    <ol>
-      <li>
-        <div class="time-left">Jan 2025</div>
-        <div class="time-right">
-          <div class="milestone">Design phase completed</div>
-          <div class="progress-bar"><div class="progress" data-progress="100"></div></div>
-        </div>
-      </li>
+    <!-- CARD 2 -->
+    <div class="history-card1">
+      <div class="history-card1-iconBox">
+        <svg class="svg-icon dartboard" viewBox="0 0 20 20">
+          <path d="M14.613,10c0,0.23-0.188,0.419-0.419,0.419H10.42v3.774c0,0.23-0.189,0.42-0.42,0.42s-0.419-0.189-0.419-0.42v-3.774H5.806c-0.23,0-0.419-0.189-0.419-0.419s0.189-0.419,0.419-0.419h3.775V5.806c0-0.23,0.189-0.419,0.419-0.419s0.42,0.189,0.42,0.419v3.775h3.774C14.425,9.581,14.613,9.77,14.613,10"></path>
+        </svg>
+        <svg class="svg-icon eyehole" viewBox="0 0 20 20">
+          <path d="M17.659,9.597h-1.224c-0.199-3.235-2.797-5.833-6.032-6.033V2.341c0-0.222-0.182-0.403-0.403-0.403S9.597,2.119,9.597,2.341v1.223c-3.235,0.2-5.833,2.798-6.033,6.033H2.341c-0.222,0-0.403,0.182-0.403,0.403s0.182,0.403,0.403,0.403h1.223c0.2,3.235,2.798,5.833,6.033,6.032v1.224c0,0.222,0.182,0.403,0.403,0.403s0.403-0.182,0.403-0.403v-1.224c3.235-0.199,5.833-2.797,6.032-6.032h1.224c0.222,0,0.403-0.182,0.403-0.403S17.881,9.597,17.659,9.597"></path>
+        </svg>
+        <svg class="svg-icon batman">
+          <path class="svg-fill-primary" d="M86.578,41.004s-8.219,.295-8.607,7.685c0,0-9.824-4.379-11.571,7.874,0,0-8.653-5.402-14.586,9.744l-1.861-3.908-1.861,3.908c-5.933-15.146-14.586-9.744-14.586-9.744-1.752-12.253-11.571-7.874-11.571-7.874-.366-6.927-7.609-7.621-8.514-7.68,11.643,.442,15.904-7.314,15.904-7.314,3.015,13.499,14.097,14.603,14.097,14.603l2.43-9.335,1.461,4.379h5.28l1.457-4.379,2.43,9.335s11.087-1.103,14.102-14.603c0,0,4.282,7.798,15.996,7.31Z"></path>
+        </svg>
+      </div>
 
-      <li>
-        <div class="time-left">Mar 2025</div>
-        <div class="time-right">
-          <div class="milestone">Backend APIs ready</div>
-          <div class="progress-bar"><div class="progress" data-progress="85"></div></div>
-        </div>
-      </li>
+      <div class="history-card1-info">
+        <span>Milestones</span>
+        <p>Over the years, we achieved key milestones that shaped our company’s strong foundation.</p>
+        <a href="#" class="history-card1-btn">Explore</a>
+      </div>
+    </div>
 
-      <li>
-        <div class="time-left">May 2025</div>
-        <div class="time-right">
-          <div class="milestone">Beta testing</div>
-          <div class="progress-bar"><div class="progress" data-progress="60"></div></div>
-        </div>
-      </li>
-    </ol>
   </div>
 
 </section>
 
 
+      <!-- ===== Different Section: Analytics + Team + Timeline ===== -->
+<section class="unique-section">
 
-<section class="history-progress-section">
-  <h2 class="history-title">Our Journey Through the Years</h2>
+  <h2>History Data</h2>
 
-  <div class="history-wrapper">
-    <!-- Timeline points -->
-    <div class="history-timeline">
-      <div class="h-point active" data-year="2019">2019</div>
-      <div class="h-point" data-year="2020">2020</div>
-      <div class="h-point" data-year="2021">2021</div>
-      <div class="h-point" data-year="2022">2022</div>
-      <div class="h-point" data-year="2023">2023</div>
+  <!-- PART A: Mini Analytics (sparkline-like + small KPIs) -->
+
+
+
+  <!-- Animated Analytics — drop in page -->
+<section class="analytics-wrap" aria-label="Mini analytics">
+  <div class="analytics animated-card">
+
+    <!-- KPIs -->
+    <div class="kpis" role="list">
+      <div class="kpi" role="listitem" aria-hidden="false">
+        <div class="kpi-value" data-target="874">0</div>
+        <div class="kpi-label">Monthly Visits</div>
+        <div class="kpi-sub">+12% vs last month</div>
+      </div>
+
+      <div class="kpi" role="listitem">
+        <div class="kpi-value" data-target="124">0</div>
+        <div class="kpi-label">New Leads</div>
+        <div class="kpi-sub">Quality ↑</div>
+      </div>
+
+      <div class="kpi" role="listitem">
+        <div class="kpi-value" data-target="3.8">0</div>
+        <div class="kpi-label">Avg. Time (min)</div>
+        <div class="kpi-sub">Engagement</div>
+      </div>
     </div>
 
-    <!-- Detail panel -->
-    <div class="history-card" id="historyCard">
-      <h3 id="hYear">2019</h3>
-      <p id="hContent">Company founded with a mission to deliver modern solutions.</p>
+    <!-- Mini chart + progress area -->
+    <div class="mini-chart-area">
+      <div class="mini-chart">
+        <svg viewBox="0 0 120 40" preserveAspectRatio="none" class="spark" aria-hidden="true">
+          <defs>
+            <linearGradient id="sparkGrad" x1="0" x2="1">
+              <stop offset="0%" stop-color="#60a5fa"/>
+              <stop offset="50%" stop-color="#3b82f6"/>
+              <stop offset="100%" stop-color="#06b6d4"/>
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3.2" result="coloredBlur"/>
+              <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
 
-      <div class="history-stats">
-        <div class="stat-box">
-          <span class="stat-number" id="hStat">25</span>
-          <span class="stat-label">Clients</span>
+          <!-- subtle filled area under line -->
+          <polyline class="sparkfill" points="0,30 20,24 40,12 60,18 80,10 100,20 120,14" fill="rgba(59,130,246,0.08)" stroke="none"/>
+          <polyline class="sparkline" points="0,30 20,24 40,12 60,18 80,10 100,20 120,14"
+            fill="none" stroke="url(#sparkGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+            style="filter:url(#glow)"/>
+        </svg>
+
+        <div class="chart-label">Visits last 7 days</div>
+      </div>
+
+      <div class="progress-group" aria-hidden="false">
+        <div class="progress-row">
+          <div class="progress-title">Conversion</div>
+          <div class="progress-track">
+            <div class="progress-bar" data-progress="72" style="width:0%">
+              <div class="progress-shimmer"></div>
+              <span class="progress-value">72%</span>
+            </div>
+          </div>
         </div>
+
+        <div class="progress-row">
+          <div class="progress-title">Activation</div>
+          <div class="progress-track">
+            <div class="progress-bar" data-progress="54" style="width:0%">
+              <div class="progress-shimmer"></div>
+              <span class="progress-value">54%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="progress-row">
+          <div class="progress-title">Retention</div>
+          <div class="progress-track">
+            <div class="progress-bar" data-progress="88" style="width:0%">
+              <div class="progress-shimmer"></div>
+              <span class="progress-value">88%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+  
+
+
+<h2>Updates</h2>
+<!-- Coming Soon (No Bootstrap) -->
+<section class="ezy__comingsoon10 light" aria-label="Coming soon section">
+
+  <svg class="ezy__comingsoon10-shape" viewBox="0 0 436 512" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="45" cy="121" r="391" fill="#E5F4F6" />
+    <circle cx="44.6737" cy="121.327" r="332.578" fill="#C7E7EB" />
+    <circle cx="45.0002" cy="121" r="265.671" fill="#B5E0E6" />
+    <circle cx="44.6736" cy="121.326" r="213.777" fill="#A6D6DC" />
+  </svg>
+
+  <div class="ezy__comingsoon10-wrapper">
+
+    <div class="ezy__comingsoon10-card">
+      <div class="ezy__comingsoon10-left">
+        <div class="ezy__comingsoon10-content-wrapper">
+          <h2 class="ezy__comingsoon10-heading">Coming Soon</h2>
+          <p class="ezy__comingsoon10-sub-heading">
+            An activity that requires a person's mental or physical effort is work.
+            If a person is trained for a certain type of job, they may have a profession.
+            Typically, a job would be a subset of someone's career.
+          </p>
+
+          <form id="ezy__comingsoon10-subscription-form" class="ezy__comingsoon10-subscription-form" novalidate>
+            <div class="ezy__comingsoon10-input-group">
+              <input name="email" id="ezy__comingsoon10-subscription-email" class="ezy__comingsoon10-input" type="email"
+                placeholder="Enter email" required aria-label="Your email">
+              <button class="ezy__comingsoon10-btn" type="submit">Send</button>
+            </div>
+            <p id="ezy__comingsoon10-msg" class="ezy__comingsoon10-msg" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+
+      <div class="ezy__comingsoon10-right">
+        <div class="ezy__comingsoon10-bg-holder"
+          style="background-image: url('https://cdn.easyfrontend.com/pictures/comingsoon/six.jpg');"
+          role="img" aria-label="Illustration"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FAQ (No Bootstrap) -->
+   <h2>Let Know About Us</h2>
+<section class="ezy__faq11 light" aria-label="FAQ section">
+
+  <div class="ezy__faq11-container">
+
+    <div class="ezy__faq11-row">
+
+      <!-- IMAGE COLUMN (left on wide screens, stacked above on mobile if desired) -->
+      <div class="ezy__faq11-col ezy__faq11-col-image">
+        <div class="ezy__faq11-bg-holder"
+             style="background-image: url('https://cdn.easyfrontend.com/pictures/blog/blog_13_3.jpg');"
+             role="img" aria-label="People working illustration"></div>
+      </div>
+
+      <!-- FAQ LIST COLUMN -->
+      <div class="ezy__faq11-col ezy__faq11-col-list">
+        <div class="ezy__faq11-list" id="faqList">
+
+          <!-- FAQ ITEM TEMPLATE -->
+          <div class="ezy__faq11-item">
+            <button class="ezy__faq11-btn-collapse" aria-expanded="true" aria-controls="faq-1" id="faq-1-btn">
+              <span class="ezy__faq11-question">What is Easy Frontend?</span>
+              <svg class="ezy__faq11-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path fill="currentColor" d="M12 15.5l-6-6 1.4-1.4L12 12.7l4.6-4.6L18 9.5z"></path>
+              </svg>
+            </button>
+
+            <div id="faq-1" class="ezy__faq11-collapse show" role="region" aria-labelledby="faq-1-btn">
+              <div class="ezy__faq11-content">
+                <p>
+                  When it comes to booking a holiday, we know everyone likes something different — so we've designed
+                  our getaways with you in mind. We craft experiences to match different travel tastes.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ezy__faq11-item">
+            <button class="ezy__faq11-btn-collapse" aria-expanded="false" aria-controls="faq-2" id="faq-2-btn">
+              <span class="ezy__faq11-question">Who is Easy Frontend for?</span>
+              <svg class="ezy__faq11-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path fill="currentColor" d="M12 15.5l-6-6 1.4-1.4L12 12.7l4.6-4.6L18 9.5z"></path>
+              </svg>
+            </button>
+            <div id="faq-2" class="ezy__faq11-collapse" role="region" aria-labelledby="faq-2-btn">
+              <div class="ezy__faq11-content">
+                <p>
+                  Designers, developers, and teams who want prebuilt UI patterns and clean front-end snippets to
+                  bootstrap projects quickly.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ezy__faq11-item">
+            <button class="ezy__faq11-btn-collapse" aria-expanded="false" aria-controls="faq-3" id="faq-3-btn">
+              <span class="ezy__faq11-question">How does Easy Frontend work?</span>
+              <svg class="ezy__faq11-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path fill="currentColor" d="M12 15.5l-6-6 1.4-1.4L12 12.7l4.6-4.6L18 9.5z"></path>
+              </svg>
+            </button>
+            <div id="faq-3" class="ezy__faq11-collapse" role="region" aria-labelledby="faq-3-btn">
+              <div class="ezy__faq11-content">
+                <p>
+                  We provide curated ready-to-use front-end components, templates and tutorials so you can move fast
+                  and stay consistent with design.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ezy__faq11-item">
+            <button class="ezy__faq11-btn-collapse" aria-expanded="false" aria-controls="faq-4" id="faq-4-btn">
+              <span class="ezy__faq11-question">How often does your team upload resources?</span>
+              <svg class="ezy__faq11-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path fill="currentColor" d="M12 15.5l-6-6 1.4-1.4L12 12.7l4.6-4.6L18 9.5z"></path>
+              </svg>
+            </button>
+            <div id="faq-4" class="ezy__faq11-collapse" role="region" aria-labelledby="faq-4-btn">
+              <div class="ezy__faq11-content">
+                <p>
+                  We publish new resources and UI patterns on a regular basis — typically multiple times monthly.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- you can duplicate items as needed -->
+
+          <div class="ezy__faq11-actions">
+
+            <!-- From Uiverse.io by mrhyddenn --> 
+<button class="faq-btn2">
+    <span>Button</span>
+</button>
+
+
+
+      
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+</section>
+
+
+
+
+<!-- History Cards (3-up responsive) -->
+ 
+  <h2>Mission & Vission</h2>
+<section class="histry-card2-section" aria-label="Company history cards">
+
+  <div class="histry-card2-row">
+
+    <!-- Card 1: Founded -->
+    <article class="histry-card2" tabindex="0" aria-labelledby="hc1-title" role="article">
+      <svg class="histry-card2-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2L2 7v7c0 5 5 8 10 8s10-3 10-8V7L12 2zM12 12a3 3 0 100-6 3 3 0 000 6z"/>
+      </svg>
+
+      <div class="histry-card2-content">
+        <h3 id="hc1-title" class="histry-card2-title">Founded (2012)</h3>
+        <p class="histry-card2-desc">Born from a small studio with a bold idea: build human-centered digital experiences. Our founders started with two people, a laptop and a shared passion for design.</p>
+      </div>
+    </article>
+
+    <!-- Card 2: Growth & Milestones -->
+    <article class="histry-card2" tabindex="0" aria-labelledby="hc2-title" role="article">
+      <svg class="histry-card2-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 3v18h18" fill="none" stroke="currentColor" stroke-width="1.2"></path>
+        <path d="M7 14l4-4 4 6 4-10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+
+      <div class="histry-card2-content">
+        <h3 id="hc2-title" class="histry-card2-title">Growth & Milestones</h3>
+        <p class="histry-card2-desc">From our first client project to serving hundreds of customers worldwide — we expanded our services, formed strategic partnerships and launched our platform in 2017.</p>
+      </div>
+    </article>
+
+    <!-- Card 3: Today & Vision -->
+    <article class="histry-card2" tabindex="0" aria-labelledby="hc3-title" role="article">
+      <svg class="histry-card2-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2l3 6 6 .5-4.5 3.8L19 20 12 16.5 5 20l1.5-7.7L2 8.5 8 8z"></path>
+      </svg>
+
+      <div class="histry-card2-content">
+        <h3 id="hc3-title" class="histry-card2-title">Today & Vision</h3>
+        <p class="histry-card2-desc">Today we're a diverse team focused on sustainable growth. Our vision: empower teams with intuitive tools and delightful design that scale products responsibly.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+
+<!-- Team Carousel (No Bootstrap) -->
+<section class="ezy__team2 light" aria-label="Our Experts Team">
+  <div class="ezy__team2-inner">
+    <header class="ezy__team2-head">
+      <h2 class="ezy__team2-heading">Our Experts Team</h2>
+      <p class="ezy__team2-sub-heading">Assumenda non repellendus distinctio nihil dicta sapiente, quibusdam maiores, illum at qui.</p>
+    </header>
+
+    <!-- Carousel wrapper -->
+    <div class="team-carousel-wrap" tabindex="0" aria-roledescription="carousel" aria-label="Team members carousel">
+      <div class="team-carousel" id="teamCarousel" aria-live="polite">
+        <!-- Slide items (original set - will be duplicated by JS for seamless loop) -->
+        <article class="team-card" role="group" aria-roledescription="slide">
+          <img src="https://cdn.easyfrontend.com/pictures/users/user24.jpg" alt="Akshay Kumar" class="team-avatar" />
+          <div class="team-content">
+            <h4 class="team-name">Akshay Kumar</h4>
+            <h6 class="team-role">Founder / CEO</h6>
+            <p class="team-desc">Subscribe Easy Tutorials Youtube Channel watch more videos</p>
+            <div class="team-social">
+              <a href="#" aria-label="Akshay on Facebook">FB</a>
+              <a href="#" aria-label="Akshay on LinkedIn">LI</a>
+              <a href="#" aria-label="Akshay on Twitter">TW</a>
+              <a href="#" aria-label="Akshay on Behance">BH</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="team-card" role="group" aria-roledescription="slide">
+          <img src="https://cdn.easyfrontend.com/pictures/users/user2.jpg" alt="Raima Ray" class="team-avatar" />
+          <div class="team-content">
+            <h4 class="team-name">Raima Ray</h4>
+            <h6 class="team-role">Business Head</h6>
+            <p class="team-desc">Subscribe Easy Tutorials Youtube Channel watch more videos</p>
+            <div class="team-social">
+              <a href="#" aria-label="Raima on Facebook">FB</a>
+              <a href="#" aria-label="Raima on LinkedIn">LI</a>
+              <a href="#" aria-label="Raima on Twitter">TW</a>
+              <a href="#" aria-label="Raima on Behance">BH</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="team-card" role="group" aria-roledescription="slide">
+          <img src="https://cdn.easyfrontend.com/pictures/users/user25.jpg" alt="Arjun Kapur" class="team-avatar" />
+          <div class="team-content">
+            <h4 class="team-name">Arjun Kapur</h4>
+            <h6 class="team-role">UI Design</h6>
+            <p class="team-desc">Subscribe Easy Tutorials Youtube Channel watch more videos</p>
+            <div class="team-social">
+              <a href="#" aria-label="Arjun on Facebook">FB</a>
+              <a href="#" aria-label="Arjun on LinkedIn">LI</a>
+              <a href="#" aria-label="Arjun on Twitter">TW</a>
+              <a href="#" aria-label="Arjun on Behance">BH</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="team-card" role="group" aria-roledescription="slide">
+          <img src="https://cdn.easyfrontend.com/pictures/users/user3.jpg" alt="Alia Bhatt" class="team-avatar" />
+          <div class="team-content">
+            <h4 class="team-name">Alia Bhatt</h4>
+            <h6 class="team-role">Marketing Head</h6>
+            <p class="team-desc">Subscribe Easy Tutorials Youtube Channel watch more videos</p>
+            <div class="team-social">
+              <a href="#" aria-label="Alia on Facebook">FB</a>
+              <a href="#" aria-label="Alia on LinkedIn">LI</a>
+              <a href="#" aria-label="Alia on Twitter">TW</a>
+              <a href="#" aria-label="Alia on Behance">BH</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- JS will clone these slides to allow seamless continuous scrolling -->
       </div>
     </div>
   </div>

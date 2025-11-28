@@ -147,7 +147,7 @@
 .cc-status {
   margin-top: 8px;
   font-weight: 700;
-  color: green;
+  color: rgb(128, 73, 0);
 }
 
 /* ---- location card (right) ---- */
@@ -263,5 +263,759 @@
 @media (max-width: 480px) {
   .cc-map-wrap {
     height: 160px;
+  }
+}
+
+
+/* sunscribe-carr — ported & responsive */
+
+/* reset box-sizing */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* outer wrapper */
+.sunscribe-carr {
+  display:flex;
+  justify-content:center;
+  padding: 22px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* card */
+.sunscribe-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  background: #fff;
+  border: 6px solid #000;
+  box-shadow: 12px 12px 0 #000;
+  transition: transform 0.28s, box-shadow 0.28s;
+  border-radius: 6px;
+}
+
+/* hover lift (desktop only) */
+@media (hover: hover) {
+  .sunscribe-card:hover {
+    transform: translate(-6px, -6px);
+    box-shadow: 18px 18px 0 #000;
+  }
+}
+
+/* title */
+.sunscribe-card__title {
+  display:block;
+  font-size: 28px;
+  font-weight: 900;
+  color: #000;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* underline reveal */
+.sunscribe-card__title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 90%;
+  height: 3px;
+  background-color: #000;
+  transform: translateX(-100%);
+  transition: transform 0.28s ease;
+}
+
+@media (hover: hover) {
+  .sunscribe-card:hover .sunscribe-card__title::after {
+    transform: translateX(0);
+  }
+}
+
+/* content */
+.sunscribe-card__content {
+  font-size: 15px;
+  line-height: 1.45;
+  color: #000;
+  margin-bottom: 16px;
+}
+
+/* form layout */
+.sunscribe-card__form { display:flex; flex-direction:column; gap:12px; }
+
+/* input */
+.sunscribe-card__form input[type="email"] {
+  padding: 10px;
+  border: 3px solid #000;
+  font-size: 15px;
+  font-family: inherit;
+  width: 100%;
+  transition: transform 0.2s ease, background-color 0.2s;
+  border-radius: 4px;
+}
+
+/* focus state */
+.sunscribe-card__form input[type="email"]:focus {
+  outline: none;
+  transform: scale(1.02);
+  background-color: #000;
+  color: #fff;
+}
+
+/* row containing button + message */
+.sunscribe-row {
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+/* button */
+.sunscribe-card__button {
+  border: 3px solid #000;
+  background: #000;
+  color: #fff;
+  padding: 10px 14px;
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.18s ease;
+  min-width: 44%;
+  border-radius: 4px;
+}
+
+/* button top band that slides up on hover */
+.sunscribe-card__button::before {
+  content: "Sure?";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 105%;
+  background-color: #eca202fd;
+  color: #000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transform: translateY(100%);
+  transition: transform 0.28s ease;
+}
+
+/* reveal on hover (desktop) */
+@media (hover: hover) {
+  .sunscribe-card__button:hover::before { transform: translateY(0); }
+}
+
+/* active press */
+.sunscribe-card__button:active { transform: scale(0.98); }
+
+/* message area */
+.sunscribe-msg {
+  font-size: 13px;
+  color: #000;
+  min-height: 20px;
+  line-height: 1;
+}
+
+/* hint */
+.sunscribe-hint { font-size: 12px; color: #444; margin-top: 6px; display:block; }
+
+/* small screens: stack button above msg if tight */
+@media (max-width:420px){
+  .sunscribe-row{ flex-direction:column; align-items:stretch; }
+  .sunscribe-card__button{ width:100%; }
+}
+
+/* accessible visually-hidden helper */
+.visually-hidden{
+  position:absolute!important;
+  height:1px;width:1px;
+  overflow:hidden;clip:rect(1px,1px,1px,1px);
+  white-space:nowrap;border:0;padding:0;margin:-1px;
+}
+
+
+
+/* ---------- Container (matches your initial rules) ---------- */
+.contact-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 28px;
+  margin: 25px;
+  padding: 41px;
+  border-radius: 16px;
+  flex-wrap: wrap; /* allow wrapping on smaller screens */
+}
+
+/* ---------------- MAIN CARD ---------------- */
+.contact-email-card {
+  width: 260px;
+  max-width: calc(40vw); /* scale down on small / medium screens */
+  height: 280px;
+  min-width: 220px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 18px;
+}
+
+.contact-email-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.6);
+}
+
+/* ----------- INNER GLASS LAYER ------------ */
+.contact-email-card-inner {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.06); /* subtle glass */
+  backdrop-filter: blur(10px) saturate(1.05);
+  -webkit-backdrop-filter: blur(10px) saturate(1.05);
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(2, 6, 23, 0.45) inset;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  overflow: hidden;
+}
+
+
+/* ---------------- CONTENT ---------------- */
+.contact-email-card-content {
+  text-align: center;
+  color: #000000; /* white text for contrast on dark background */
+  width: 100%;
+  font-weight: 600;
+}
+
+.contact-email-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+
+.contact-email-card-email {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  margin-bottom: 18px;
+  word-break: break-word;
+}
+
+/* ---------------- BUTTON ---------------- */
+.contact-email-card-btn {
+  display: inline-block;
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  border-radius: 25px;
+  text-decoration: none;
+background: linear-gradient(48deg, #c560ff 0%, #ff9900 100%);
+  color: rgb(44, 43, 43);
+  transition: transform 0.22s ease-in-out, box-shadow 0.22s ease-in-out;
+  box-shadow: 0 6px 18px rgba(48, 35, 174, 0.18);
+  border: 0;
+  outline: none;
+}
+
+.contact-email-card-btn:focus {
+  box-shadow: 0 6px 22px rgba(48, 35, 174, 0.35);
+  transform: translateY(-2px);
+}
+
+.contact-email-card-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 32px rgba(48, 35, 174, 0.35);
+}
+
+/* ---------------- GRADIENT BLOBS ---------------- */
+.contact-email-card-blob {
+  width: 150px;
+  height: 150px;
+background: linear-gradient(48deg, #c560ff 0%, #ff9900 100%);
+
+
+  border-radius: 40% 30% 60% 30% / 40% 35% 60% 50%;
+  position: absolute;
+  animation: contact-email-card-float 3.2s ease-in-out infinite alternate;
+  opacity: 0.72;
+  z-index: 1;
+  transform-origin: center;
+}
+
+/* place blobs using extra classes for clarity */
+.blob-top-left { top: -40px; left: -40px; transform: rotate(-12deg); }
+.blob-bottom-right { bottom: -40px; right: -40px; transform: rotate(14deg); animation-direction: alternate-reverse; }
+
+/* reduce blob size on small screens */
+@media (max-width: 420px) {
+  .contact-email-card-blob { width: 120px; height: 120px; filter: blur(8px); }
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+@keyframes contact-email-card-float {
+  0% { transform: translateY(0) rotate(0deg) scale(1); }
+  100% { transform: translateY(-18px) rotate(6deg) scale(1.06); }
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+/* Medium screens: keep two cards comfortable */
+@media (max-width: 960px) {
+  .contact-section {
+    padding: 28px;
+    gap: 20px;
+  }
+  .contact-email-card { width: 240px; height: 260px; }
+}
+
+/* Small screens: stack vertically */
+@media (max-width: 720px) {
+  .contact-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 16px;
+  }
+
+  .contact-email-card {
+    width: min(92%, 420px);
+    height: auto;
+    padding: 14px 0;
+  }
+
+  .contact-email-card-inner {
+    padding: 28px 20px;
+    height: auto;
+  }
+
+  .contact-email-card-title { font-size: 1.15rem; }
+  .contact-email-card-email { margin-bottom: 14px; }
+
+  /* move blobs further out so they don't overlap important content */
+  .blob-top-left { top: -30px; left: -24px; }
+  .blob-bottom-right { bottom: -30px; right: -24px; }
+}
+
+/* Very small devices */
+@media (max-width: 380px) {
+  .contact-email-card { width: 94%; }
+  .contact-email-card-blob { display: none; } /* hide blobs if space is extremely limited */
+}
+
+
+/* contact 1 scection  */
+  :root{
+    /* Bootstrap-like variables */
+    --bs-body-color: #3b3128;
+    --bs-body-bg: rgb(255,255,255);
+
+    /* Easy Frontend variables */
+    --ezy-theme-color: rgba(253, 169, 13, 0.808);
+    --ezy-theme-color-rgb: rgb(253, 169, 13);
+    --ezy-shape-color: #493f34;
+
+    /* layout */
+    --container-max: 1140px;
+    --gutter: 24px;
+  }
+
+  /* Section wrapper */
+  .ezy__contact1{
+    padding: 40px 16px;
+    background-color: var(--bs-body-bg);
+  }
+
+  /* Container: centered, constrained width */
+  .container{
+    width:100%;
+    margin:0 auto;
+    padding-right: var(--gutter);
+    position: relative;
+  }
+
+  /* Row: responsive two-column layout using grid */
+  .row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: center;
+  }
+
+  /* Column utilities (col-lg-6 equivalent) */
+  .col-lg-6 { width:100%; }
+  .mb-3{ margin-bottom:12px }
+  .mb-lg-0{ margin-bottom:0 }
+
+  /* Position helpers */
+  .position-relative{ position: relative; }
+  .mx-auto{ margin-left:auto; margin-right:auto; display:block; }
+  .py-5{ padding-top:40px; padding-bottom:40px; }
+
+  /* large screens: two columns */
+  @media (min-width: 992px){
+    .ezy__contact1 { padding: 60px 0; }
+    .row {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .col-lg-6 { width: auto; }
+  }
+
+  /* content styles */
+  .ezy__contact1-banner {
+    width:100%;
+    height:auto;
+    display:block;
+    border-radius: 0 100px 5px 100px;
+    position: relative;
+    z-index:2;
+    max-width:100%;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+  }
+
+  /* shape background (big rounded shape behind right column) */
+  .ezy__contact1-shape{
+    position:absolute;
+    inset:0;
+    background: var(--ezy-shape-color);
+    border-radius: 150px 50px 5px 30px;
+    transform: rotate(180deg);
+    z-index: 1;
+  }
+
+  /* move shape left on wide screens like original */
+  @media (min-width: 991px){
+    .ezy__contact1-shape { left: -20%; }
+  }
+
+  /* content card */
+  .ezy__contact1-content{
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.12));
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.28);
+    overflow: hidden;
+  }
+
+  /* keep it white text as in original "light" variant */
+  .ezy__contact1.light .ezy__contact1-content,
+  .ezy__contact1-content { color: #ffffff; }
+
+  .ezy__contact1-heading{
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 1;
+    margin: 0 0 8px 0;
+  }
+
+  @media (min-width: 768px){
+    .ezy__contact1-heading{ font-size: 45px; line-height: 1; }
+  }
+
+  .ezy__contact1-sub-heading{
+    font-size: 18px;
+    line-height: 1.4;
+    margin:0;
+    color: var(--bs-body-bg); /* in your original code sub-heading used body-bg as color */
+  }
+
+  /* Form controls */
+  .form-group { margin-bottom: 16px; }
+  .form-control{
+    width:100%;
+    display:block;
+    min-height:48px;
+    line-height:48px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: rgba(255,255,255,0.02);
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .form-control::placeholder{ color: rgba(255,255,255,0.75); }
+  .form-control:focus{
+    border-color: #fec686;
+    box-shadow: none;
+  }
+
+  textarea.form-control{
+    line-height: normal;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    height: 112px;
+    resize: vertical;
+  }
+
+  /* button */
+  .ezy__contact1-btn{
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--ezy-theme-color);
+    border: 1px solid var(--ezy-theme-color);
+    color: #fff;
+    min-width: 120px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .ezy__contact1-btn:hover{
+    background-color: rgba(var(--ezy-theme-color-rgb), .9);
+    border-color: rgba(var(--ezy-theme-color-rgb), .9);
+  }
+  .text-end{ text-align: right; }
+
+  /* small-screen spacing and card centering inside right column */
+  .col-md-10 { width:100%; margin-left:auto; margin-right:auto; }
+  .mx-auto { margin-left:auto; margin-right:auto; }
+
+  /* keep text and spacing similar to original */
+  .mb-5{ margin-bottom: 20px; }
+  .mt-0{ margin-top:0; }
+  .py-4{ padding-top:16px; padding-bottom:16px; }
+  .rounded{ border-radius: 12px; }
+
+  /* Optional: make the card not too wide on very large screens */
+  .ezy__contact1-content { width: 600px; margin-left: auto; margin-right: auto; }
+
+  /* Minor responsive tweaks */
+  @media (max-width: 991px){
+    .ezy__contact1-shape { display: none; } /* hide big shape under stacked layout for clarity */
+    .ezy__contact1-content { margin: 8px 0; }
+  }
+
+  /* accessibility: focus styles for button */
+  .ezy__contact1-btn:focus{ outline: 3px solid rgba(253, 169, 13, 0.18); outline-offset: 2px; }
+
+  /* utility for image container on small screens */
+  .img-wrap{ display:flex; justify-content:center; align-items:center; }
+
+  /* subtle responsive image sizing */
+  @media (min-width: 1200px){
+    .ezy__contact1-banner{ max-width: 520px; }
+  }
+
+  /* small devices: loosen paddings */
+  @media (max-width: 480px){
+    .ezy__contact1-content{ padding:18px; }
+    .ezy__contact1{ padding: 28px 12px; }
+    .py-5{ padding-top:28px; padding-bottom:28px; }
+  }
+
+
+  /* INPUT BOX FORM */
+
+  /* Floating label wrapper */
+.inputBox {
+  position: relative;
+  width: 100%;
+}
+
+/* Input style (matches your theme) */
+.contact-form-input {
+  width: 100%;
+  padding: 15px 20px;
+  outline: none;
+  background: transparent;
+  border-radius: 10px;
+  color: #fff;
+  border: 1px solid #414141;
+  font-size: 1em;
+  transition: 0.3s ease;
+}
+
+/* Floating label text */
+.inputBox span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 15px 20px;
+  pointer-events: none;
+  font-size: 1em;
+  transition: 0.4s cubic-bezier(0.05, 0.81, 0, 0.93);
+  color: #ee8456;
+  letter-spacing: 0.1em;
+}
+
+/* Animation on focus / when not empty */
+.contact-form-input:focus ~ span,
+.contact-form-input:valid ~ span {
+  font-size: 0.7em;
+  transform: translateX(14px) translateY(-7.5px);
+  padding: 0 5px;
+  border-radius: 2px;
+  background: #212121;
+  letter-spacing: 0em;
+  border: 1px solid #ee8456;
+}
+
+/* Optional: focus border highlight */
+.contact-form-input:focus {
+  border-color: #ee8456;
+}
+
+
+
+/*   contatc form btn */
+
+
+  /* Uiverse Button — Converted to contact-form-btn */
+
+  .text-end{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+.contact-form-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em 1.3em 0.8em 0.9em;
+  color: white;
+
+  background: linear-gradient(to right, #29180c, #63442b, #3e3224);
+
+  border: none;
+  letter-spacing: 0.05em;
+  border-radius: 16px;
+  transition: 0.3s ease;
+      width: 200px;
+    justify-content: center;
+}
+
+/* Icon animation */
+.contact-form-btn svg {
+  margin-right: 3px;
+  transform: rotate(30deg);
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* Text movement */
+.contact-form-btn span {
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* Hover animations */
+.contact-form-btn:hover svg {
+  transform: translateX(5px) rotate(90deg);
+}
+
+.contact-form-btn:hover span {
+  transform: translateX(7px);
+}
+
+/* Press effect */
+.contact-form-btn:active {
+  transform: scale(0.96);
+}
+
+
+
+
+/*LOCATION SECTION  */
+
+  /* Location Card Wrapper */
+.location-card {
+  padding: 22px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.25);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Hover Lift Effect */
+.location-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* Title */
+.location-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ff9d1c;
+  margin-bottom: 4px;
+}
+
+/* Sub text */
+.location-sub {
+  margin-bottom: 16px;
+  color: #dcdcdc;
+  font-size: 15px;
+}
+
+/* Map Container */
+.location-map {
+  width: 100%;
+  height: 260px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 14px;
+
+  /* add soft border */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* smooth fade reveal */
+  animation: mapFade 1.2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes mapFade {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Full-width responsive iframe */
+.location-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Maps Link */
+.location-link {
+  font-weight: 600;
+  font-size: 15px;
+  color: #40c9ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.location-link:hover {
+  color: #ff9d1c;
+}
+
+/* Nice reveal animation for entire card (optional if you use reveal already) */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: revealAnim 0.9s ease forwards;
+}
+
+@keyframes revealAnim {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -4,12 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Task</title>
-  <link rel="stylesheet" href="./css/styles.css">
 
   <link rel="stylesheet" href="./css/index.css">
+  
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
 
 <body>
+
+
+
+  <!-- FULLSCREEN LOADER -->
+<div id="site-loader" class="loader-overlay">
+  <div class="loader-rings loader-anim-pan">
+    <div style="--delay:06" class="loader-ring loader-anim-zoomIn"></div>
+    <div style="--delay:04" class="loader-ring loader-anim-zoomIn"></div>
+    <div style="--delay:03" class="loader-ring loader-anim-zoomIn"></div>
+    <div style="--delay:02" class="loader-ring loader-anim-zoomIn"></div>
+    <div style="--delay:01" class="loader-ring loader-anim-zoomIn"></div>
+    <div style="--delay:00" class="loader-ring loader-anim-zoomIn"></div>
+  </div>
+</div>
+
+
+
 
   <div class="container">
     
@@ -30,24 +48,184 @@
       
    <!-- topbar with search + dropdown quick-nav -->
 
-<div class="topbar">
-  <div class="search-wrap" id="searchWrap">
-    <label for="navSearch" class="visually-hidden">Search site</label>
-    <div class="search-input-group">
-      <input id="navSearch" class="search-box" type="text" placeholder="Search or jump to..." aria-autocomplete="list" aria-controls="navList" aria-expanded="false" autocomplete="off" />
-      <button id="searchToggle" class="search-btn" aria-label="Open quick navigation">▾</button>
-    </div>
 
-    <ul id="navList" class="search-list" role="listbox" tabindex="-1" aria-label="Quick navigation" hidden>
-      <!-- JS will populate items; listed here as fallback -->
-      <li role="option" data-href="./index.html">Dashboard</li>
-      <li role="option" data-href="./company-info.html">Company Info</li>
-      <li role="option" data-href="./history.html">History</li>
-      <li role="option" data-href="./contact.html">Contact</li>
-    </ul>
+      <!-- search-bar section --> 
+
+      <!-- SEARCH BAR SECTION -->
+
+      
+  <div class="search-bar-wave-group" id="searchBar">
+  <input class="search-bar-input" type="text" required aria-label="Search" />
+  <span class="search-bar-bar"></span>
+
+  <label class="search-bar-label">
+    <span style="--index:0" class="search-bar-label-char">S</span>
+    <span style="--index:1" class="search-bar-label-char">e</span>
+    <span style="--index:2" class="search-bar-label-char">a</span>
+    <span style="--index:3" class="search-bar-label-char">r</span>
+    <span style="--index:4" class="search-bar-label-char">c</span>
+    <span style="--index:5" class="search-bar-label-char">h</span>
+  </label>
+
+  <!-- Dropdown menu buttons -->
+  <div class="search-bar-dropdowns" id="searchBarDropdowns">
+
+    <button class="search-bar-dd-btn" data-index="0" data-link="index.html">Dashboard</button>
+    <button class="search-bar-dd-btn" data-index="1" data-link="company-info.html">Company Info</button>
+    <button class="search-bar-dd-btn" data-index="2" data-link="history.html">History</button>
+    <button class="search-bar-dd-btn" data-index="3" data-link="contact.html">Contact</button>
+
   </div>
 </div>
 
+
+
+
+<!-- ===== trigger button — put this anywhere on your page ===== -->
+<div style="padding:20px;">
+  <button id="openLogin" aria-haspopup="dialog" aria-controls="loginModal" aria-expanded="false"
+    style="padding:10px 14px;border-radius:8px;background:#eca60e;color:#fff;border:0;cursor:pointer;">
+    Admin
+  </button>
+</div>
+
+<!-- ===== Namespaced Modal markup (hidden by default) ===== -->
+<div id="loginModal" class="login-section__overlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="login-section__dialog" role="document" aria-labelledby="loginTitle">
+    <div class="login-section__content">
+
+      <!-- close button -->
+      <button class="login-section__close" aria-label="Close login dialog" id="closeLogin">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6L6 18"></path><path d="M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- YOUR ORIGINAL CARD HTML (kept intact) -->
+      <div class="card" role="group" aria-labelledby="loginTitle">
+        <input
+          value=""
+          class="blind-check"
+          type="checkbox"
+          id="blind-input"
+          name="blindcheck"
+          hidden=""
+        />
+
+        <label for="blind-input" class="blind_input">
+          <span class="hide">Hide</span>
+          <span class="show">Show</span>
+        </label>
+
+        <form class="form" onsubmit="return false;">
+          <div class="title" id="loginTitle">Sign In</div>
+
+          <label class="label_input" for="email-input">Email</label>
+          <input
+            spellcheck="false"
+            class="input"
+            type="email"
+            name="email"
+            id="email-input"
+          />
+
+          <div class="frg_pss">
+            <label class="label_input" for="password-input">Password</label>
+            <a href="#">Forgot password?</a>
+          </div>
+          <input
+            spellcheck="false"
+            class="input"
+            type="text"
+            name="password"
+            id="password-input"
+          />
+          <button class="submit" type="button">Submit</button>
+        </form>
+
+        <label for="blind-input" class="avatar" aria-hidden="true">
+          <!-- svg monkey simplified (kept same IDs and classes) -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            viewBox="0 0 64 64"
+            id="monkey"
+          >
+            <ellipse cx="53.7" cy="33" rx="8.3" ry="8.2" fill="#89664c"></ellipse>
+            <ellipse cx="53.7" cy="33" rx="5.4" ry="5.4" fill="#ffc5d3"></ellipse>
+            <ellipse cx="10.2" cy="33" rx="8.2" ry="8.2" fill="#89664c"></ellipse>
+            <ellipse cx="10.2" cy="33" rx="5.4" ry="5.4" fill="#ffc5d3"></ellipse>
+            <g fill="#89664c">
+              <path
+                d="m43.4 10.8c1.1-.6 1.9-.9 1.9-.9-3.2-1.1-6-1.8-8.5-2.1 1.3-1 2.1-1.3 2.1-1.3-20.4-2.9-30.1 9-30.1 19.5h46.4c-.7-7.4-4.8-12.4-11.8-15.2"
+              ></path>
+              <path
+                d="m55.3 27.6c0-9.7-10.4-17.6-23.3-17.6s-23.3 7.9-23.3 17.6c0 2.3.6 4.4 1.6 6.4-1 2-1.6 4.2-1.6 6.4 0 9.7 10.4 17.6 23.3 17.6s23.3-7.9 23.3-17.6c0-2.3-.6-4.4-1.6-6.4 1-2 1.6-4.2 1.6-6.4"
+              ></path>
+            </g>
+            <path
+              d="m52 28.2c0-16.9-20-6.1-20-6.1s-20-10.8-20 6.1c0 4.7 2.9 9 7.5 11.7-1.3 1.7-2.1 3.6-2.1 5.7 0 6.1 6.6 11 14.7 11s14.7-4.9 14.7-11c0-2.1-.8-4-2.1-5.7 4.4-2.7 7.3-7 7.3-11.7"
+              fill="#e0ac7e"
+            ></path>
+            <g fill="#3b302a" class="monkey-eye-nose">
+              <path
+                d="m35.1 38.7c0 1.1-.4 2.1-1 2.1-.6 0-1-.9-1-2.1 0-1.1.4-2.1 1-2.1.6.1 1 1 1 2.1"
+              ></path>
+              <path
+                d="m30.9 38.7c0 1.1-.4 2.1-1 2.1-.6 0-1-.9-1-2.1 0-1.1.4-2.1 1-2.1.5.1 1 1 1 2.1"
+              ></path>
+              <ellipse
+                cx="40.7"
+                cy="31.7"
+                rx="3.5"
+                ry="4.5"
+                class="monkey-eye-r"
+              ></ellipse>
+              <ellipse
+                cx="23.3"
+                cy="31.7"
+                rx="3.5"
+                ry="4.5"
+                class="monkey-eye-l"
+              ></ellipse>
+            </g>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            viewBox="0 0 64 64"
+            id="monkey-hands"
+          >
+            <path
+              fill="#89664C"
+              d="M9.4,32.5L2.1,61.9H14c-1.6-7.7,4-21,4-21L9.4,32.5z"
+            ></path>
+            <path
+              fill="#FFD6BB"
+              d="M15.8,24.8c0,0,4.9-4.5,9.5-3.9c2.3,0.3-7.1,7.6-7.1,7.6s9.7-8.2,11.7-5.6c1.8,2.3-8.9,9.8-8.9,9.8
+      s10-8.1,9.6-4.6c-0.3,3.8-7.9,12.8-12.5,13.8C11.5,43.2,6.3,39,9.8,24.4C11.6,17,13.3,25.2,15.8,24.8"
+            ></path>
+            <path
+              fill="#89664C"
+              d="M54.8,32.5l7.3,29.4H50.2c1.6-7.7-4-21-4-21L54.8,32.5z"
+            ></path>
+            <path
+              fill="#FFD6BB"
+              d="M48.4,24.8c0,0-4.9-4.5-9.5-3.9c-2.3,0.3,7.1,7.6,7.1,7.6s-9.7-8.2-11.7-5.6c-1.8,2.3,8.9,9.8,8.9,9.8
+      s-10-8.1-9.7-4.6c0.4,3.8,8,12.8,12.6,13.8c6.6,1.3,11.8-2.9,8.3-17.5C52.6,17,50.9,25.2,48.4,24.8"
+            ></path>
+          </svg>
+        </label>
+      </div>
+      <!-- end card -->
+
+    </div>
+  </div>
+</div>
 
       <!-- only one element has id="home" -->
       <section id="home" class="page-section dashboard-light">
@@ -55,123 +233,253 @@
         <h2 class="section-title">Dashboard Overview</h2>
         <p class="section-sub">A quick and clean summary of your website’s important details.</p>
 
-        <div class="info-row">
-          <article class="info-box">
-            <h3>About the Company</h3>
-            <p>Our company focuses on delivering reliable services with a customer-first approach. Explore more in Company Info.</p>
-            <a href="./company-info.html" class="link-btn">View Details →</a>
-          </article>
+       
+        <section class="dashboard-card-section">
+          <!-- dashboard card1 -->
+<div class="dashboard-overview-card">
+  <div class="content">
+    <div class="back">
+      <div class="back-content">
+          <svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"viewBox="0 0 50 50" height="50px" width="50px" fill="#ffffff">
+    <rect x="3" y="11" width="3" height="8" rx="1"></rect>
+    <rect x="9" y="6" width="3" height="13" rx="1"></rect>
+    <rect x="15" y="3" width="3" height="16" rx="1"></rect>
+  </svg>
+        <strong>About the Company</strong>
+      </div>
+    </div>
+    <div class="front">
+      
+      <div class="img">
+        <div class="circle"></div>
+        <div class="circle" id="right"></div>
+        <div class="circle" id="bottom"></div>
+      </div>
 
-          <article class="info-box">
-            <h3>Latest History Update</h3>
-            <p>The last record update was added recently. Visit the History page to check changes and timelines.</p>
-            <a href="./history.html" class="link-btn">View History →</a>
-          </article>
+      <div class="front-content">
+        <small class="badge">About</small>
+        <div class="description">
+
+            <p id="dashboard-p">Our company focuses on delivering reliable services with a customer-first approach. Explore more in Company Info.</p>
+         
+           
+          <div class="title">
+            <p class="title">
+           
+            </p>
+            <svg fill-rule="nonzero" height="15px" width="15px"
+              viewBox="0,0,256,256" xmlns="http://www.w3.org/2000/svg">
+              <g transform="scale(8,8)">
+                <path d="M25,27l-9,-6.75l-9,6.75v-23h18z"></path>
+              </g>
+            </svg>
+          </div>
+          <p class="card-footer">
+
+            <button>Details →</button>
+          </p>
         </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- dashboard card2 -->
+<div class="dashboard-overview-card">
+  <div class="content">
+    <div class="back">
+      <div class="back-content">
+         <div class="back-content">
+  <svg
+    class="tag-icon"
+    viewBox="0 0 24 24"
+    width="50px"
+    height="50px"
+    fill="#ffffff"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <rect x="3" y="16" width="18" height="2" rx="1"></rect>
+    <rect x="4" y="12" width="3" height="4" rx="1"></rect>
+    <rect x="10.5" y="10" width="3" height="6" rx="1"></rect>
+    <rect x="17" y="8" width="3" height="8" rx="1"></rect>
+    <circle cx="8" cy="7" r="3"></circle>
+    <rect x="7.7" y="5.5" width="0.8" height="2.1" rx="0.4"></rect>
+    <rect x="8" y="6.8" width="1.7" height="0.8" rx="0.4" transform="rotate(30 8 7.2)"></rect>
+  </svg>
+  <strong>Latest History Update</strong>
+</div>
+
+        <strong>Latest History Update</strong>
+      </div>
+    </div>
+    <div class="front">
+      
+      <div class="img">
+        <div class="circle"></div>
+        <div class="circle" id="right"></div>
+        <div class="circle" id="bottom"></div>
+      </div>
+
+      <div class="front-content">
+        <small class="badge">History</small>
+        <div class="description">
+
+            <p id="dashboard-p"> The last record update was added recently. Visit the History page to check changes and timelines.
+        </p>
+        
+
+          <div class="title">
+            <p class="title">
+           
+            </p>
+            <svg fill-rule="nonzero" height="15px" width="15px"
+              viewBox="0,0,256,256" xmlns="http://www.w3.org/2000/svg">
+              <g transform="scale(8,8)">
+                <path d="M25,27l-9,-6.75l-9,6.75v-23h18z"></path>
+              </g>
+            </svg>
+          </div>
+          <p class="card-footer">
+
+            <button>History →</button>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</section>
+
+
+
 
 
 
         <!-- DASHBOARD: Animated Insights Section -->
+         <h2>Insights</h2>
 <section class="dashboard-insights" aria-label="Dashboard insights">
   <div class="insights-row">
     <!-- Stat cards -->
-    <div class="stat-card reveal" data-animate-delay="0">
-      <div class="stat-left">
-        <div class="stat-icon">📈</div>
-        <div>
-          <div class="stat-label">Monthly Revenue</div>
-          <div class="stat-value" data-target="12840">0</div>
-        </div>
+   <!-- Dashboard Insight Card -->
+<div class="dashboard-insight-card reveal" data-animate-delay="0">
+  <div class="dashboard-insight-content">
+    <div class="dashboard-insight-left">
+      <div class="dashboard-insight-icon">📈</div>
+      <div>
+        <div class="dashboard-insight-label">Monthly Revenue</div>
+        <div class="dashboard-insight-value" data-target="12840">0</div>
       </div>
-      <div class="stat-trend">+8.4%</div>
     </div>
 
-    <div class="stat-card reveal" data-animate-delay="80">
-      <div class="stat-left">
-        <div class="stat-icon">👥</div>
-        <div>
-          <div class="stat-label">Active Users</div>
-          <div class="stat-value" data-target="5421">0</div>
-        </div>
-      </div>
-      <div class="stat-trend">+3.1%</div>
-    </div>
+    <div class="dashboard-insight-trend">+8.4%</div>
+  </div>
+</div>
 
-    <div class="stat-card reveal" data-animate-delay="160">
-      <div class="stat-left">
-        <div class="stat-icon">🛒</div>
-        <div>
-          <div class="stat-label">New Orders</div>
-          <div class="stat-value" data-target="312">0</div>
-        </div>
+   <!-- Dashboard Insight Cards -->
+<div class="dashboard-insight-card reveal" data-animate-delay="80">
+  <div class="dashboard-insight-content">
+    <div class="dashboard-insight-left">
+      <div class="dashboard-insight-icon">👥</div>
+      <div>
+        <div class="dashboard-insight-label">Active Users</div>
+        <div class="dashboard-insight-value" data-target="5421">0</div>
       </div>
-      <div class="stat-trend">-1.2%</div>
     </div>
+    <div class="dashboard-insight-trend">+3.1%</div>
+  </div>
+</div>
 
-    <div class="stat-card reveal" data-animate-delay="240">
-      <div class="stat-left">
-        <div class="stat-icon">⭐</div>
-        <div>
-          <div class="stat-label">Satisfaction</div>
-          <div class="stat-value" data-target="92">0</div>
-        </div>
+<div class="dashboard-insight-card reveal" data-animate-delay="160">
+  <div class="dashboard-insight-content">
+    <div class="dashboard-insight-left">
+      <div class="dashboard-insight-icon">🛒</div>
+      <div>
+        <div class="dashboard-insight-label">New Orders</div>
+        <div class="dashboard-insight-value" data-target="312">0</div>
       </div>
-      <div class="stat-trend">+0.6%</div>
     </div>
+    <div class="dashboard-insight-trend">-1.2%</div>
+  </div>
+</div>
+
+<div class="dashboard-insight-card reveal" data-animate-delay="240">
+  <div class="dashboard-insight-content">
+    <div class="dashboard-insight-left">
+      <div class="dashboard-insight-icon">⭐</div>
+      <div>
+        <div class="dashboard-insight-label">Satisfaction</div>
+        <div class="dashboard-insight-value" data-target="92">0</div>
+      </div>
+    </div>
+    <div class="dashboard-insight-trend">+0.6%</div>
+  </div>
+</div>
+
   </div>
 
   <div class="insights-bottom">
-    <!-- Activity / Timeline -->
-    <div class="activity-panel reveal" data-animate-delay="320" aria-live="polite">
-      <h4>Recent Activity</h4>
-      <ul class="activity-list">
-        <li><time>2h ago</time> New order #4576 placed — <strong>John D.</strong></li>
-        <li><time>5h ago</time> Client onboarding completed — <strong>Acme Corp.</strong></li>
-        <li><time>1d ago</time> Server maintenance deployed — <strong>Deploy v1.4</strong></li>
-        <li><time>2d ago</time> New signup — <strong>Meera K.</strong></li>
-      </ul>
-    </div>
 
-    <!-- Progress + mini metrics -->
-    <div class="progress-panel reveal" data-animate-delay="400">
-      <h4>Goals & Progress</h4>
 
-      <div class="progress-item">
-        <div class="progress-meta">
-          <span>Quarterly Sales</span>
-          <strong>68%</strong>
-        </div>
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 68%"></div>
-        </div>
-      </div>
-
-      <div class="mini-metrics">
-        <div class="mini">
-          <div class="mini-label">Bounce</div>
-          <div class="mini-value">23%</div>
-        </div>
-        <div class="mini">
-          <div class="mini-label">Avg. Session</div>
-          <div class="mini-value">4m 12s</div>
-        </div>
-        <div class="mini">
-          <div class="mini-label">Conversion</div>
-          <div class="mini-value">6.2%</div>
-        </div>
-      </div>
-    </div>
+   
   </div>
 </section>
 
-        <div class="full-box">
-          <h3>What’s New?</h3>
-          <ul>
-            <li>✔ Improvements made to the overall layout.</li>
-            <li>✔ New contact queries added.</li>
-            <li>✔ Clean and responsive design implemented.</li>
-          </ul>
-        </div>
+  <!-- Full Width Activity Timeline -->
+<div class="dashboard-activity-full reveal" data-animate-delay="320">
+  <h4 class="activity-title">Recent Activity</h4>
+
+  <ul class="dashboard-activity-timeline">
+    <li class="timeline-item" data-item-delay="0">
+      <span class="timeline-line"></span>
+      <div class="timeline-content">
+        <time>2h ago</time>
+        <p>New order <strong>#4576</strong> placed — <strong>John D.</strong></p>
+      </div>
+    </li>
+
+    <li class="timeline-item" data-item-delay="80">
+      <span class="timeline-line"></span>
+      <div class="timeline-content">
+        <time>5h ago</time>
+        <p>Client onboarding completed — <strong>Acme Corp.</strong></p>
+      </div>
+    </li>
+
+    <li class="timeline-item" data-item-delay="160">
+      <span class="timeline-line"></span>
+      <div class="timeline-content">
+        <time>1d ago</time>
+        <p>Server maintenance deployed — <strong>Deploy v1.4</strong></p>
+      </div>
+    </li>
+
+    <li class="timeline-item" data-item-delay="240">
+      <span class="timeline-line"></span>
+      <div class="timeline-content">
+        <time>2d ago</time>
+        <p>New signup — <strong>Meera K.</strong></p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+       <!-- Animated "What's New?" Full Block -->
+<div class="whats-new-card-box whats-new-card reveal" data-animate-delay="120">
+  <div class="whats-new-inner">
+    <h3 class="wn-title">What’s New?</h3>
+    <ul class="wn-list">
+      <li>✔ Improvements made to the overall layout.</li>
+      <li>✔ New contact queries added.</li>
+      <li>✔ Clean and responsive design implemented.</li>
+    </ul>
+  </div>
+</div>
+
+
 
         <!-- ===== Project Snapshot (creative + professional) ===== -->
 <section class="snapshot reveal">
@@ -179,69 +487,108 @@
   <!-- row: left = progress + quick actions, right = activity + tasks -->
   <div class="snap-row">
 
-    <!-- LEFT: Progress widgets + quick actions -->
-    <div class="snap-left">
-      <div class="snap-card">
-        <h3>Project Progress</h3>
-        <p class="muted">Overall completion across main modules.</p>
+  <!-- LEFT: Progress widgets + quick actions (UPGRADED) -->
+<div class="snap-left">
+  <div class="snap-card snap-progress-card" data-animate-delay="160" aria-live="polite">
+    <h3>Project Progress</h3>
+    <p class="muted">Overall completion across main modules.</p>
 
-        <div class="progress-list">
-          <div class="prog-item">
-            <div class="label">Frontend</div>
-            <div class="bar">
-              <div class="fill" data-fill="78"></div>
-            </div>
-            <div class="percent">78%</div>
-          </div>
-
-          <div class="prog-item">
-            <div class="label">Backend</div>
-            <div class="bar">
-              <div class="fill" data-fill="62"></div>
-            </div>
-            <div class="percent">62%</div>
-          </div>
-
-          <div class="prog-item">
-            <div class="label">QA</div>
-            <div class="bar">
-              <div class="fill" data-fill="45"></div>
-            </div>
-            <div class="percent">45%</div>
-          </div>
+    <div class="progress-list">
+      <div class="prog-item" data-fill="78" data-index="0">
+        <div class="prog-head">
+          <div class="label">Frontend</div>
+          <div class="percent" aria-hidden="true">0%</div>
+        </div>
+        <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="fill" style="width:0%"></div>
+          <div class="fill-shimmer"></div>
         </div>
       </div>
 
-      <div class="snap-card quick-actions">
-        <h4>Quick Actions</h4>
-        <div class="actions">
-          <button class="btn small">+ New Task</button>
-          <button class="btn small outline">Assign</button>
-          <button class="btn small">Export</button>
+      <div class="prog-item" data-fill="62" data-index="1">
+        <div class="prog-head">
+          <div class="label">Backend</div>
+          <div class="percent" aria-hidden="true">0%</div>
+        </div>
+        <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="fill" style="width:0%"></div>
+          <div class="fill-shimmer"></div>
+        </div>
+      </div>
+
+      <div class="prog-item" data-fill="45" data-index="2">
+        <div class="prog-head">
+          <div class="label">QA</div>
+          <div class="percent" aria-hidden="true">0%</div>
+        </div>
+        <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="fill" style="width:0%"></div>
+          <div class="fill-shimmer"></div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+
 
     <!-- RIGHT: Activity feed + upcoming tasks -->
     <div class="snap-right">
-      <div class="snap-card activity">
-        <h3>Recent Activity</h3>
-        <ul class="activity-list">
-          <li><strong>Priya</strong> merged PR #14 <span class="muted">· 2h ago</span></li>
-          <li><strong>Ravi</strong> deployed staging build <span class="muted">· Yesterday</span></li>
-          <li><strong>Akash</strong> updated header styles <span class="muted">· 3 days</span></li>
-          <li><strong>You</strong> created release notes <span class="muted">· 5 days</span></li>
-        </ul>
-      </div>
+  
 
-      <div class="snap-card tasks">
-        <h3>Upcoming Tasks</h3>
-        <ol class="task-list">
-          <li><input type="checkbox" id="t1"><label for="t1">Polish responsive header</label></li>
-          <li><input type="checkbox" id="t2"><label for="t2">API: add user filter</label></li>
-          <li><input type="checkbox" id="t3"><label for="t3">Write unit tests</label></li>
-        </ol>
-      </div>
+     <div class="snap-card tasks">
+  <h3>Upcoming Tasks</h3>
+
+  <ol class="task-list">
+    <li>
+      <label class="snap-task-checkbox">
+        <input type="checkbox" id="t1">
+        <div class="snap-task-checkmark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M20 6L9 17L4 12" 
+                  stroke-width="3" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <span class="snap-task-label">Polish responsive header</span>
+      </label>
+    </li>
+
+    <li>
+      <label class="snap-task-checkbox">
+        <input type="checkbox" id="t2">
+        <div class="snap-task-checkmark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M20 6L9 17L4 12" 
+                  stroke-width="3" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <span class="snap-task-label">API: add user filter</span>
+      </label>
+    </li>
+
+    <li>
+      <label class="snap-task-checkbox">
+        <input type="checkbox" id="t3">
+        <div class="snap-task-checkmark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M20 6L9 17L4 12" 
+                  stroke-width="3" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <span class="snap-task-label">Write unit tests</span>
+      </label>
+    </li>
+  </ol>
+</div>
+
+
+
     </div>
 
   </div>

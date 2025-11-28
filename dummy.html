@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <div class="search-bar-wave-group" id="searchBar">
+  <input class="search-bar-input" type="text" required aria-label="Search" />
+  <span class="search-bar-bar"></span>
+
+  <label class="search-bar-label">
+    <span style="--index:0" class="search-bar-label-char">S</span>
+    <span style="--index:1" class="search-bar-label-char">e</span>
+    <span style="--index:2" class="search-bar-label-char">a</span>
+    <span style="--index:3" class="search-bar-label-char">r</span>
+    <span style="--index:4" class="search-bar-label-char">c</span>
+    <span style="--index:5" class="search-bar-label-char">h</span>
+  </label>
+
+  <!-- Dropdown menu buttons -->
+  <div class="search-bar-dropdowns" id="searchBarDropdowns">
+
+    <button class="search-bar-dd-btn" data-index="0" data-link="home.html">Home</button>
+    <button class="search-bar-dd-btn" data-index="1" data-link="about.html">About</button>
+    <button class="search-bar-dd-btn" data-index="2" data-link="services.html">Services</button>
+    <button class="search-bar-dd-btn" data-index="3" data-link="contact.html">Contact</button>
+
+  </div>
+</div>
+
+
+<style>
+  /* Wave Input */
+.search-bar-wave-group {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-bar-input {
+  font-size: 16px;
+  padding: 12px 10px 12px 6px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #515151;
+  background: transparent;
+  color: inherit;
+}
+
+.search-bar-input:focus {
+  outline: none;
+}
+
+/* Floating Label */
+.search-bar-label {
+  color: #999;
+  font-size: 18px;
+  position: absolute;
+  left: 6px;
+  top: 12px;
+  display: flex;
+  pointer-events: none;
+}
+
+.search-bar-label-char {
+  transition: 0.22s cubic-bezier(.2,.9,.25,1);
+  transition-delay: calc(var(--index) * 0.04s);
+}
+
+.search-bar-input:focus ~ .search-bar-label .search-bar-label-char,
+.search-bar-input:valid ~ .search-bar-label .search-bar-label-char {
+  transform: translateY(-20px);
+  font-size: 14px;
+  color: #5264ae;
+}
+
+/* Bar */
+.search-bar-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-top: 6px;
+}
+
+.search-bar-bar:before,
+.search-bar-bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  position: absolute;
+  background: #5264ae;
+  transition: 0.24s cubic-bezier(.2,.9,.25,1);
+}
+
+.search-bar-bar:before { left: 50%; }
+.search-bar-bar:after { right: 50%; }
+
+.search-bar-input:focus ~ .search-bar-bar:before,
+.search-bar-input:focus ~ .search-bar-bar:after {
+  width: 50%;
+}
+
+/* Dropdown Container */
+.search-bar-dropdowns {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 12px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: 0.25s cubic-bezier(.2,.9,.25,1);
+  z-index: 100;
+}
+
+/* Open State */
+.search-bar-dropdowns.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Button Style */
+.search-bar-dd-btn {
+  padding: 12px 16px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid rgba(16,16,16,0.06);
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.25s cubic-bezier(.2,.9,.25,1), transform 0.2s ease;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+/* Stagger animation */
+.search-bar-dropdowns.open .search-bar-dd-btn {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.search-bar-dd-btn[data-index="1"] { transition-delay: 50ms; }
+.search-bar-dd-btn[data-index="2"] { transition-delay: 100ms; }
+.search-bar-dd-btn[data-index="3"] { transition-delay: 150ms; }
+
+.search-bar-dd-btn:hover {
+  background: #eef2ff;
+  transform: translateX(8px);
+}
+
+</style>
+
+<script>
+(function () {
+  const box = document.getElementById("searchBar");
+  const input = box.querySelector(".search-bar-input");
+  const dropdowns = box.querySelector("#searchBarDropdowns");
+  const buttons = Array.from(box.querySelectorAll(".search-bar-dd-btn"));
+
+  function openDD() {
+    dropdowns.classList.add("open");
+  }
+
+  function closeDD() {
+    dropdowns.classList.remove("open");
+  }
+
+  // Show dropdown when focusing
+  input.addEventListener("focus", openDD);
+
+  // Filter buttons based on input
+  input.addEventListener("input", () => {
+    const query = input.value.toLowerCase();
+
+    buttons.forEach(btn => {
+      btn.style.display = btn.textContent.toLowerCase().includes(query)
+        ? "block"
+        : "none";
+    });
+
+    openDD(); // keep open while typing
+  });
+
+  // Clicking a button → go to page
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      window.location.href = btn.dataset.link;
+    });
+  });
+
+  // Press Enter → go to best match
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+
+      const q = input.value.toLowerCase();
+
+      // Exact match check
+      let exact = buttons.find(b => b.textContent.toLowerCase() === q);
+
+      if (exact) {
+        window.location.href = exact.dataset.link;
+        return;
+      }
+
+      // Otherwise go to first visible button
+      let firstVisible = buttons.find(b => b.style.display !== "none");
+
+      if (firstVisible) {
+        window.location.href = firstVisible.dataset.link;
+      }
+    }
+  });
+
+  // Close when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!box.contains(e.target)) closeDD();
+  });
+
+  // ESC closes
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeDD();
+  });
+})();
+</script>
+
+
+</body>
+</html>

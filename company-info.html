@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,7 +19,7 @@
     <div class="sidebar">
       <h2>My Website</h2>
       <ul>
-        <li><a href="./index.html" >Dashboard</a></li>
+        <li><a href="./index.html">Dashboard</a></li>
         <li><a href="#" class="active">Company Info</a></li>
         <li><a href="./history.html">History</a></li>
         <li><a href="./contact.html">Contact</a></li>
@@ -28,185 +29,566 @@
 
     <div class="main">
 
-      <div class="topbar">
-  <div class="search-wrap" id="searchWrap">
-    <label for="navSearch" class="visually-hidden">Search site</label>
-    <div class="search-input-group">
-      <input id="navSearch" class="search-box" type="text" placeholder="Search or jump to..." aria-autocomplete="list" aria-controls="navList" aria-expanded="false" autocomplete="off" />
-      <button id="searchToggle" class="search-btn" aria-label="Open quick navigation">▾</button>
-    </div>
+           <!-- SEARCH BAR SECTION -->
 
-    <ul id="navList" class="search-list" role="listbox" tabindex="-1" aria-label="Quick navigation" hidden>
-      <!-- JS will populate items; listed here as fallback -->
-      <li role="option" data-href="./index.html">Dashboard</li>
-      <li role="option" data-href="./company-info.html">Company Info</li>
-      <li role="option" data-href="./history.html">History</li>
-      <li role="option" data-href="./contact.html">Contact</li>
-    </ul>
+      
+  <div class="search-bar-wave-group" id="searchBar">
+  <input class="search-bar-input" type="text" required aria-label="Search" />
+  <span class="search-bar-bar"></span>
+
+  <label class="search-bar-label">
+    <span style="--index:0" class="search-bar-label-char">S</span>
+    <span style="--index:1" class="search-bar-label-char">e</span>
+    <span style="--index:2" class="search-bar-label-char">a</span>
+    <span style="--index:3" class="search-bar-label-char">r</span>
+    <span style="--index:4" class="search-bar-label-char">c</span>
+    <span style="--index:5" class="search-bar-label-char">h</span>
+  </label>
+
+  <!-- Dropdown menu buttons -->
+  <div class="search-bar-dropdowns" id="searchBarDropdowns">
+
+    <button class="search-bar-dd-btn" data-index="0" data-link="index.html">Dashboard</button>
+    <button class="search-bar-dd-btn" data-index="1" data-link="company-info.html">Company Info</button>
+    <button class="search-bar-dd-btn" data-index="2" data-link="history.html">History</button>
+    <button class="search-bar-dd-btn" data-index="3" data-link="contact.html">Contact</button>
+
   </div>
 </div>
 
 
-     <section id="home" class="page-section dashboard-updated">
 
-  <!-- HERO / Intro -->
-  <div class="hero-creative">
-    <div class="hero-left">
-      <h1 class="hero-title">Clean. Professional. Smooth.</h1>
-      <p class="hero-lead">A modern, lightweight dashboard section that looks professional and is friendly for beginners.</p>
-      <div class="hero-ctas">
-        <a class="btn-primary" href="./company-info.html">Explore Company →</a>
-        <a class="btn-ghost" href="./contact.html">Contact</a>
+
+<!-- ===== trigger button — put this anywhere on your page ===== -->
+<div style="padding:20px;">
+  <button id="openLogin" aria-haspopup="dialog" aria-controls="loginModal" aria-expanded="false"
+    style="padding:10px 14px;border-radius:8px;background:#eca60e;color:#fff;border:0;cursor:pointer;">
+    Admin
+  </button>
+</div>
+
+<!-- ===== Namespaced Modal markup (hidden by default) ===== -->
+<div id="loginModal" class="login-section__overlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="login-section__dialog" role="document" aria-labelledby="loginTitle">
+    <div class="login-section__content">
+
+      <!-- close button -->
+      <button class="login-section__close" aria-label="Close login dialog" id="closeLogin">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6L6 18"></path><path d="M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- YOUR ORIGINAL CARD HTML (kept intact) -->
+      <div class="card" role="group" aria-labelledby="loginTitle">
+        <input
+          value=""
+          class="blind-check"
+          type="checkbox"
+          id="blind-input"
+          name="blindcheck"
+          hidden=""
+        />
+
+        <label for="blind-input" class="blind_input">
+          <span class="hide">Hide</span>
+          <span class="show">Show</span>
+        </label>
+
+        <form class="form" onsubmit="return false;">
+          <div class="title" id="loginTitle">Sign In</div>
+
+          <label class="label_input" for="email-input">Email</label>
+          <input
+            spellcheck="false"
+            class="input"
+            type="email"
+            name="email"
+            id="email-input"
+          />
+
+          <div class="frg_pss">
+            <label class="label_input" for="password-input">Password</label>
+            <a href="#">Forgot password?</a>
+          </div>
+          <input
+            spellcheck="false"
+            class="input"
+            type="text"
+            name="password"
+            id="password-input"
+          />
+          <button class="submit" type="button">Submit</button>
+        </form>
+
+        <label for="blind-input" class="avatar" aria-hidden="true">
+          <!-- svg monkey simplified (kept same IDs and classes) -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            viewBox="0 0 64 64"
+            id="monkey"
+          >
+            <ellipse cx="53.7" cy="33" rx="8.3" ry="8.2" fill="#89664c"></ellipse>
+            <ellipse cx="53.7" cy="33" rx="5.4" ry="5.4" fill="#ffc5d3"></ellipse>
+            <ellipse cx="10.2" cy="33" rx="8.2" ry="8.2" fill="#89664c"></ellipse>
+            <ellipse cx="10.2" cy="33" rx="5.4" ry="5.4" fill="#ffc5d3"></ellipse>
+            <g fill="#89664c">
+              <path
+                d="m43.4 10.8c1.1-.6 1.9-.9 1.9-.9-3.2-1.1-6-1.8-8.5-2.1 1.3-1 2.1-1.3 2.1-1.3-20.4-2.9-30.1 9-30.1 19.5h46.4c-.7-7.4-4.8-12.4-11.8-15.2"
+              ></path>
+              <path
+                d="m55.3 27.6c0-9.7-10.4-17.6-23.3-17.6s-23.3 7.9-23.3 17.6c0 2.3.6 4.4 1.6 6.4-1 2-1.6 4.2-1.6 6.4 0 9.7 10.4 17.6 23.3 17.6s23.3-7.9 23.3-17.6c0-2.3-.6-4.4-1.6-6.4 1-2 1.6-4.2 1.6-6.4"
+              ></path>
+            </g>
+            <path
+              d="m52 28.2c0-16.9-20-6.1-20-6.1s-20-10.8-20 6.1c0 4.7 2.9 9 7.5 11.7-1.3 1.7-2.1 3.6-2.1 5.7 0 6.1 6.6 11 14.7 11s14.7-4.9 14.7-11c0-2.1-.8-4-2.1-5.7 4.4-2.7 7.3-7 7.3-11.7"
+              fill="#e0ac7e"
+            ></path>
+            <g fill="#3b302a" class="monkey-eye-nose">
+              <path
+                d="m35.1 38.7c0 1.1-.4 2.1-1 2.1-.6 0-1-.9-1-2.1 0-1.1.4-2.1 1-2.1.6.1 1 1 1 2.1"
+              ></path>
+              <path
+                d="m30.9 38.7c0 1.1-.4 2.1-1 2.1-.6 0-1-.9-1-2.1 0-1.1.4-2.1 1-2.1.5.1 1 1 1 2.1"
+              ></path>
+              <ellipse
+                cx="40.7"
+                cy="31.7"
+                rx="3.5"
+                ry="4.5"
+                class="monkey-eye-r"
+              ></ellipse>
+              <ellipse
+                cx="23.3"
+                cy="31.7"
+                rx="3.5"
+                ry="4.5"
+                class="monkey-eye-l"
+              ></ellipse>
+            </g>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            viewBox="0 0 64 64"
+            id="monkey-hands"
+          >
+            <path
+              fill="#89664C"
+              d="M9.4,32.5L2.1,61.9H14c-1.6-7.7,4-21,4-21L9.4,32.5z"
+            ></path>
+            <path
+              fill="#FFD6BB"
+              d="M15.8,24.8c0,0,4.9-4.5,9.5-3.9c2.3,0.3-7.1,7.6-7.1,7.6s9.7-8.2,11.7-5.6c1.8,2.3-8.9,9.8-8.9,9.8
+      s10-8.1,9.6-4.6c-0.3,3.8-7.9,12.8-12.5,13.8C11.5,43.2,6.3,39,9.8,24.4C11.6,17,13.3,25.2,15.8,24.8"
+            ></path>
+            <path
+              fill="#89664C"
+              d="M54.8,32.5l7.3,29.4H50.2c1.6-7.7-4-21-4-21L54.8,32.5z"
+            ></path>
+            <path
+              fill="#FFD6BB"
+              d="M48.4,24.8c0,0-4.9-4.5-9.5-3.9c-2.3,0.3,7.1,7.6,7.1,7.6s-9.7-8.2-11.7-5.6c-1.8,2.3,8.9,9.8,8.9,9.8
+      s-10-8.1-9.7-4.6c0.4,3.8,8,12.8,12.6,13.8c6.6,1.3,11.8-2.9,8.3-17.5C52.6,17,50.9,25.2,48.4,24.8"
+            ></path>
+          </svg>
+        </label>
       </div>
+      <!-- end card -->
+
     </div>
-    <div class="hero-right">
-      <!-- animated stats -->
-      <div class="stats">
-        <div class="stat">
-          <div class="stat-number" data-target="120">0</div>
-          <div class="stat-label">Clients</div>
+  </div>
+</div>
+
+      <section id="home" class="page-section dashboard-updated">
+
+        <!-- HERO / Intro (drop this where you want the hero) -->
+        <section class="hero-creative" id="heroCreative">
+          <!-- decorative background blobs -->
+          <div class="hero-bg">
+            <div class="hero-blob blob-1"></div>
+            <div class="hero-blob blob-2"></div>
+            <div class="hero-noise"></div>
+          </div>
+
+          <div class="hero-inner">
+            <div class="hero-left">
+              <h1 class="hero-title">Clean. Professional. Smooth.</h1>
+              <p class="hero-lead">A modern, lightweight dashboard section that looks professional and is friendly for
+                beginners.</p>
+
+              <div class="hero-ctas">
+                <a href="./company-info.html" class="explore-company-btn slice">
+                  <span class="explore-company-btn-text">Explore Company →</span>
+                </a>
+
+                
+                <a class="btn-ghost" href="./contact.html">
+
+<button>
+  <span class="span-mother">
+    <span>C</span>
+    <span>o</span>
+    <span>n</span>
+    <span>t</span>
+    <span>a</span>
+    <span>c</span>
+    <span>t</span>
+  </span>
+  <span class="span-mother2">
+    <span>C</span>
+    <span>o</span>
+    <span>n</span>
+    <span>t</span>
+    <span>a</span>
+    <span>c</span>
+    <span>t</span>
+  </span>
+</button>
+
+
+                </a>
+
+            
+              </div>
+
+              <ul class="hero-features" aria-hidden="true">
+                <li class="feature">Fast load</li>
+                <li class="feature">Accessible</li>
+                <li class="feature">Beautiful UI</li>
+              </ul>
+            </div>
+
+            <div class="hero-right" id="heroRight">
+              <!-- top creative card -->
+
+              <!-- stats block -->
+              <div class="stats" aria-hidden="true">
+                <div class="stat">
+                  <div class="stat-number" data-target="120">0</div>
+                  <div class="stat-label">Clients</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-number" data-target="45">0</div>
+                  <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-number" data-target="8">0</div>
+                  <div class="stat-label">Years</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+    
+        <script>
+          /* ====== Hero interactions: counters + parallax + reveal triggers ====== */
+          (function () {
+            // Counters: animate numbers when visible
+            const counters = document.querySelectorAll('.stat-number');
+            const options = { threshold: 0.4 };
+            const counterObserver = new IntersectionObserver((entries, obs) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  const el = entry.target;
+                  const target = +el.getAttribute('data-target');
+                  if (!el.dataset.started) {
+                    el.dataset.started = 'true';
+                    let start = 0;
+                    const duration = 1400;
+                    const step = (timestamp) => {
+                      start += Math.ceil((target / (duration / 16)));
+                      if (start >= target) {
+                        el.textContent = target;
+                      } else {
+                        el.textContent = start;
+                        requestAnimationFrame(step);
+                      }
+                    };
+                    requestAnimationFrame(step);
+                  }
+                  obs.unobserve(el);
+                }
+              });
+            }, options);
+            counters.forEach(c => counterObserver.observe(c));
+
+            // Parallax: move right column elements slightly with mouse
+            const hero = document.getElementById('heroCreative');
+            const right = document.getElementById('heroRight');
+            if (hero && right) {
+              hero.addEventListener('mousemove', (e) => {
+                const r = right.getBoundingClientRect();
+                const cx = r.left + r.width / 2;
+                const cy = r.top + r.height / 2;
+                const dx = (e.clientX - cx) / r.width;
+                const dy = (e.clientY - cy) / r.height;
+                // apply small transforms
+                right.style.transform = `translate3d(${dx * 10}px, ${dy * 6}px, 0)`;
+                // subtle tilt for card
+                const card = document.getElementById('heroCard');
+                if (card) card.style.transform = `perspective(900px) translateY(-6px) rotateX(${dy * 4}deg) rotateY(${dx * 6}deg)`;
+              });
+              hero.addEventListener('mouseleave', () => {
+                right.style.transform = '';
+                const card = document.getElementById('heroCard');
+                if (card) card.style.transform = '';
+              });
+            }
+
+            // Make sure CTA micro-animations are tabbable & keyboard friendly
+            const ctas = document.querySelectorAll('.hero-ctas a');
+            ctas.forEach(a => {
+              a.addEventListener('focus', () => a.classList.add('focus'));
+              a.addEventListener('blur', () => a.classList.remove('focus'));
+            });
+          })();
+        </script>
+
+        <!-- FEATURES GRID -->
+         <div>
+          
+            <h2>Features</h2>
+         </div>
+
+        <div class="features-grid">
+
+
+          <article class="features-card card reveal">
+            <div class="text">
+              <span>Fast & Lightweight</span>
+              <p class="subtitle">Optimised for performance. Minimal code, maximum clarity. Lorem ipsum dolor sit, amet
+                consectetur adipisicing elit. Vitae, quia.</p>
+            </div>
+            <div class="icons">
+              <a class="btn" href="#">
+                <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="100" viewBox="0 0 100 100"
+                  preserveAspectRatio="xMidYMid meet" height="100" class="svg-icon">
+                  <path stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none"
+                    d="M31.8,64.5a14.5,14.5,0,0,1-3.2-28.7,17.5,17.5,0,0,1-.4-4,18.2,18.2,0,0,1,36-3.6h.3a18.2,18.2,0,0,1,3.7,36M39.1,75.4,50,86.3m0,0L60.9,75.4M50,86.3V42.7">
+                  </path>
+                </svg>
+              </a>
+              <a class="btn" href="#">
+                <svg class="svg-icon" viewBox="0 0 20 20">
+                  <path
+                    d="M4.317,16.411c-1.423-1.423-1.423-3.737,0-5.16l8.075-7.984c0.994-0.996,2.613-0.996,3.611,0.001C17,4.264,17,5.884,16.004,6.88l-8.075,7.984c-0.568,0.568-1.493,0.569-2.063-0.001c-0.569-0.569-0.569-1.495,0-2.064L9.93,8.828c0.145-0.141,0.376-0.139,0.517,0.005c0.141,0.144,0.139,0.375-0.006,0.516l-4.062,3.968c-0.282,0.282-0.282,0.745,0.003,1.03c0.285,0.284,0.747,0.284,1.032,0l8.074-7.985c0.711-0.71,0.711-1.868-0.002-2.579c-0.711-0.712-1.867-0.712-2.58,0l-8.074,7.984c-1.137,1.137-1.137,2.988,0.001,4.127c1.14,1.14,2.989,1.14,4.129,0l6.989-6.896c0.143-0.142,0.375-0.14,0.516,0.003c0.143,0.143,0.141,0.374-0.002,0.516l-6.988,6.895C8.054,17.836,5.743,17.836,4.317,16.411">
+                  </path>
+                </svg>
+              </a>
+              <a class="btn" href="#">
+                <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="100" viewBox="0 0 100 100"
+                  preserveAspectRatio="xMidYMid meet" height="100" class="svg-icon">
+                  <path stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none"
+                    d="M21.9,50h0M50,50h0m28.1,0h0M25.9,50a4,4,0,1,1-4-4A4,4,0,0,1,25.9,50ZM54,50a4,4,0,1,1-4-4A4,4,0,0,1,54,50Zm28.1,0a4,4,0,1,1-4-4A4,4,0,0,1,82.1,50Z">
+                  </path>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+
+          <article class="features-card card reveal">
+            <div class="text">
+              <span>Responsive</span>
+              <p class="subtitle">Looks great on desktop and mobile with clean stacking behavior. Lorem ipsum, dolor sit
+                amet consectetur adipisicing elit. Laboriosam, doloribus.</p>
+            </div>
+            <div class="icons">
+              <a class="btn" href="#">
+                <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="100" viewBox="0 0 100 100"
+                  preserveAspectRatio="xMidYMid meet" height="100" class="svg-icon">
+                  <path stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none"
+                    d="M31.8,64.5a14.5,14.5,0,0,1-3.2-28.7,17.5,17.5,0,0,1-.4-4,18.2,18.2,0,0,1,36-3.6h.3a18.2,18.2,0,0,1,3.7,36M39.1,75.4,50,86.3m0,0L60.9,75.4M50,86.3V42.7">
+                  </path>
+                </svg>
+              </a>
+              <a class="btn" href="#">
+                <svg class="svg-icon" viewBox="0 0 20 20">
+                  <path
+                    d="M4.317,16.411c-1.423-1.423-1.423-3.737,0-5.16l8.075-7.984c0.994-0.996,2.613-0.996,3.611,0.001C17,4.264,17,5.884,16.004,6.88l-8.075,7.984c-0.568,0.568-1.493,0.569-2.063-0.001c-0.569-0.569-0.569-1.495,0-2.064L9.93,8.828c0.145-0.141,0.376-0.139,0.517,0.005c0.141,0.144,0.139,0.375-0.006,0.516l-4.062,3.968c-0.282,0.282-0.282,0.745,0.003,1.03c0.285,0.284,0.747,0.284,1.032,0l8.074-7.985c0.711-0.71,0.711-1.868-0.002-2.579c-0.711-0.712-1.867-0.712-2.58,0l-8.074,7.984c-1.137,1.137-1.137,2.988,0.001,4.127c1.14,1.14,2.989,1.14,4.129,0l6.989-6.896c0.143-0.142,0.375-0.14,0.516,0.003c0.143,0.143,0.141,0.374-0.002,0.516l-6.988,6.895C8.054,17.836,5.743,17.836,4.317,16.411">
+                  </path>
+                </svg>
+              </a>
+              <a class="btn" href="#">
+                <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="100" viewBox="0 0 100 100"
+                  preserveAspectRatio="xMidYMid meet" height="100" class="svg-icon">
+                  <path stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none"
+                    d="M21.9,50h0M50,50h0m28.1,0h0M25.9,50a4,4,0,1,1-4-4A4,4,0,0,1,25.9,50ZM54,50a4,4,0,1,1-4-4A4,4,0,0,1,54,50Zm28.1,0a4,4,0,1,1-4-4A4,4,0,0,1,82.1,50Z">
+                  </path>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+
+          <article class="features-card card reveal">
+            <div class="text">
+              <span>Easy to Customize</span>
+              <p class="subtitle">Simple variables and clear classes so you can change styles quickly. Lorem ipsum dolor
+                sit amet consectetur adipisicing elit. Atque, blanditiis.</p>
+            </div>
+            <div class="icons">
+              <a class="btn" href="#">
+                <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="100" viewBox="0 0 100 100"
+                  preserveAspectRatio="xMidYMid meet" height="100" class="svg-icon">
+                  <path stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none"
+                    d="M31.8,64.5a14.5,14.5,0,0,1-3.2-28.7,17.5,17.5,0,0,1-.4-4,18.2,18.2,0,0,1,36-3.6h.3a18.2,18.2,0,0,1,3.7,36M39.1,75.4,50,86.3m0,0L60.9,75.4M50,86.3V42.7">
+                  </path>
+                </svg>
+              </a>
+              <a class="btn" href="#">
+                <svg class="svg-icon" viewBox="0 0 20 20">
+                  <path
+                    d="M4.317,16.411c-1.423-1.423-1.423-3.737,0-5.16l8.075-7.984c0.994-0.996,2.613-0.996,3.611,0.001C17,4.264,17,5.884,16.004,6.88l-8.075,7.984c-0.568,0.568-1.493,0.569-2.063-0.001c-0.569-0.569-0.569-1.495,0-2.064L9.93,8.828c0.145-0.141,0.376-0.139,0.517,0.005c0.141,0.144,0.139,0.375-0.006,0.516l-4.062,3.968c-0.282,0.282-0.282,0.745,0.003,1.03c0.285,0.284,0.747,0.284,1.032,0l8.074-7.985c0.711-0.71,0.711-1.868-0.002-2.579c-0.711-0.712-1.867-0.712-2.58,0l-8.074,7.984c-1.137,1.137-1.137,2.988,0.001,4.127c1.14,1.14,2.989,1.14,4.129,0l6.989-6.896c0.143-0.142,0.375-0.14,0.516,0.003c0.143,0.143,0.141,0.374-0.002,0.516l-6.988,6.895C8.054,17.836,5.743,17.836,4.317,16.411">
+                  </path>
+                </svg>
+              </a>
+              <a class="btn" href="#">
+                <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="100" viewBox="0 0 100 100"
+                  preserveAspectRatio="xMidYMid meet" height="100" class="svg-icon">
+                  <path stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none"
+                    d="M21.9,50h0M50,50h0m28.1,0h0M25.9,50a4,4,0,1,1-4-4A4,4,0,0,1,25.9,50ZM54,50a4,4,0,1,1-4-4A4,4,0,0,1,54,50Zm28.1,0a4,4,0,1,1-4-4A4,4,0,0,1,82.1,50Z">
+                  </path>
+                </svg>
+              </a>
+            </div>
+          </article>
         </div>
-        <div class="stat">
-          <div class="stat-number" data-target="45">0</div>
-          <div class="stat-label">Projects</div>
+
+
+
+
+
+
+
+
+
+        <!-- TESTIMONIALS (sliding cards) -->
+        <div class="testimonials reveal" aria-label="User testimonials">
+          <h3>What users say</h3>
+
+          <div class="testi-carousel" tabindex="0" aria-roledescription="carousel" aria-label="Testimonials carousel">
+            <div class="testi-track">
+              <!-- Slide 1 -->
+
+
+              <!-- Slide 1 -->
+              <article class="testi-card">
+                <div class="testi-header">
+                  <img src="https://i.pravatar.cc/150?img=12" class="testi-avatar" alt="Priya">
+                  <div class="testi-user-info">
+                    <h4 class="testi-name">Priya</h4>
+                    <p class="testi-role">Product Manager</p>
+                  </div>
+                  <div class="testi-icons">
+                    <span class="ti-badge">⭐</span>
+                  </div>
+                </div>
+                <p class="quote">“Clean layout and easy to use. Helped us ship faster.”</p>
+              </article>
+
+              <!-- Slide 2 -->
+              <article class="testi-card">
+                <div class="testi-header">
+                  <img src="https://i.pravatar.cc/150?img=35" class="testi-avatar" alt="Ravi">
+                  <div class="testi-user-info">
+                    <h4 class="testi-name">Ravi</h4>
+                    <p class="testi-role">UX Lead</p>
+                  </div>
+                  <div class="testi-icons">
+                    <span class="ti-badge">⭐</span>
+                    <span class="ti-badge">✔</span>
+                  </div>
+                </div>
+                <p class="quote">“Simple, modern and very responsive.”</p>
+              </article>
+
+              <!-- Slide 3 -->
+              <article class="testi-card">
+                <div class="testi-header">
+                  <img src="https://i.pravatar.cc/150?img=20" class="testi-avatar" alt="Akash">
+                  <div class="testi-user-info">
+                    <h4 class="testi-name">Akash</h4>
+                    <p class="testi-role">Developer</p>
+                  </div>
+                  <div class="testi-icons">
+                    <span class="ti-badge">✔</span>
+                  </div>
+                </div>
+                <p class="quote">“Looks professional and is easy to customize.”</p>
+              </article>
+
+              <!-- Slide 4 -->
+              <article class="testi-card">
+                <div class="testi-header">
+                  <img src="https://i.pravatar.cc/150?img=35" class="testi-avatar" alt="Ravi">
+                  <div class="testi-user-info">
+                    <h4 class="testi-name">Shankar</h4>
+                    <p class="testi-role">Test Lead</p>
+                  </div>
+                  <div class="testi-icons">
+                    <span class="ti-badge">⭐</span>
+                    <span class="ti-badge">✔</span>
+                  </div>
+                </div>
+                <p class="quote">“Simple, modern and very responsive.”</p>
+              </article>
+
+
+              <!-- slide 5 -->
+
+              <article class="testi-card">
+                <div class="testi-header">
+                  <img src="https://i.pravatar.cc/150?img=12" class="testi-avatar" alt="Priya">
+                  <div class="testi-user-info">
+                    <h4 class="testi-name">Nandhini</h4>
+                    <p class="testi-role">Product Manager</p>
+                  </div>
+                  <div class="testi-icons">
+                    <span class="ti-badge">⭐</span>
+                  </div>
+                </div>
+                <p class="quote">“Clean layout and easy to use. Helped us ship faster.”</p>
+              </article>
+
+              <!-- (Add more slides here if needed) -->
+            </div>
+          </div>
+
+
+          <!-- Dots -->
+          <div class="testi-dots" role="tablist" aria-label="Select testimonial">
+            <!-- dots are inserted by JS if you prefer; static examples provided -->
+            <button class="dot" aria-label="Show testimonial 1" aria-selected="true"></button>
+            <button class="dot" aria-label="Show testimonial 2" aria-selected="false"></button>
+            <button class="dot" aria-label="Show testimonial 3" aria-selected="false"></button>
+          </div>
         </div>
-        <div class="stat">
-          <div class="stat-number" data-target="8">0</div>
-          <div class="stat-label">Years</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FEATURES GRID -->
-  <div class="features-grid">
-    <article class="feature-card reveal">
-      <h3>Fast & Lightweight</h3>
-      <p>Optimised for performance. Minimal code, maximum clarity.</p>
-    </article>
-
-    <article class="feature-card reveal">
-      <h3>Responsive</h3>
-      <p>Looks great on desktop and mobile with clean stacking behavior.</p>
-    </article>
-
-    <article class="feature-card reveal">
-      <h3>Easy to Customize</h3>
-      <p>Simple variables and clear classes so you can change styles quickly.</p>
-    </article>
-  </div>
 
 
+      </section>
 
- <!-- TESTIMONIALS (sliding cards) -->
-<div class="testimonials reveal" aria-label="User testimonials">
-  <h3>What users say</h3>
-
-  <div class="testi-carousel" tabindex="0" aria-roledescription="carousel" aria-label="Testimonials carousel">
-    <div class="testi-track">
-      <!-- Slide 1 -->
-     
-
-      <!-- Slide 1 -->
-<article class="testi-card">
-  <div class="testi-header">
-    <img src="https://i.pravatar.cc/150?img=12" class="testi-avatar" alt="Priya">
-    <div class="testi-user-info">
-      <h4 class="testi-name">Priya</h4>
-      <p class="testi-role">Product Manager</p>
-    </div>
-    <div class="testi-icons">
-      <span class="ti-badge">⭐</span>
-    </div>
-  </div>
-  <p class="quote">“Clean layout and easy to use. Helped us ship faster.”</p>
-</article>
-
-<!-- Slide 2 -->
-<article class="testi-card">
-  <div class="testi-header">
-    <img src="https://i.pravatar.cc/150?img=35" class="testi-avatar" alt="Ravi">
-    <div class="testi-user-info">
-      <h4 class="testi-name">Ravi</h4>
-      <p class="testi-role">UX Lead</p>
-    </div>
-    <div class="testi-icons">
-      <span class="ti-badge">⭐</span>
-      <span class="ti-badge">✔</span>
-    </div>
-  </div>
-  <p class="quote">“Simple, modern and very responsive.”</p>
-</article>
-
-<!-- Slide 3 -->
-<article class="testi-card">
-  <div class="testi-header">
-    <img src="https://i.pravatar.cc/150?img=20" class="testi-avatar" alt="Akash">
-    <div class="testi-user-info">
-      <h4 class="testi-name">Akash</h4>
-      <p class="testi-role">Developer</p>
-    </div>
-    <div class="testi-icons">
-      <span class="ti-badge">✔</span>
-    </div>
-  </div>
-  <p class="quote">“Looks professional and is easy to customize.”</p>
-</article>
-
-<!-- Slide 4 -->
-<article class="testi-card">
-  <div class="testi-header">
-    <img src="https://i.pravatar.cc/150?img=35" class="testi-avatar" alt="Ravi">
-    <div class="testi-user-info">
-      <h4 class="testi-name">Shankar</h4>
-      <p class="testi-role">Test Lead</p>
-    </div>
-    <div class="testi-icons">
-      <span class="ti-badge">⭐</span>
-      <span class="ti-badge">✔</span>
-    </div>
-  </div>
-  <p class="quote">“Simple, modern and very responsive.”</p>
-</article>
+      <!-- RECENT / NEWS -->
 
 
-
-
-      <!-- (Add more slides here if needed) -->
-    </div>
-  </div>
-
+      
   
-  <!-- Dots -->
-  <div class="testi-dots" role="tablist" aria-label="Select testimonial">
-    <!-- dots are inserted by JS if you prefer; static examples provided -->
-    <button class="dot" aria-label="Show testimonial 1" aria-selected="true"></button>
-    <button class="dot" aria-label="Show testimonial 2" aria-selected="false"></button>
-    <button class="dot" aria-label="Show testimonial 3" aria-selected="false"></button>
-  </div>
-</div>
-
-
-</section>
-
-  <!-- RECENT / NEWS -->
-  <div class="recent-updates reveal">
-    <h3>Recent Updates</h3>
-    <ul>
-      <li>Layout improvements and accessibility fixes — <span class="muted">Today</span></li>
-      <li>Added contact form and quick support area — <span class="muted">2 days ago</span></li>
-      <li>Dashboard performance optimizations — <span class="muted">1 week ago</span></li>
-    </ul>
-  </div>
-
 
     </div>
 
   </div>
 
   <script src="./js/company-info.js"></script>
-  
+
   <script src="./script.js"></script>
 
 </body>
+
 </html>
